@@ -1,0 +1,209 @@
+﻿@page "/Account/Create"
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+
+@using System.Text
+@using TastyEatsBD.Core.Entities
+@using TastyEatsBD.Core.Enums
+@using TastyEatsBD.Core.Interfaces
+@using TastyEatsBD.WebApp.Services.Identity
+@using TastyEatsBD.WebApp.Components.Account.Shared
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Identity
+
+@inject IAccountService AccountService
+@inject IFileService FileService
+@inject IdentityManagementService IdentityManagementService
+@inject IMessageService MessageService
+
+<PageTitle>Create Account</PageTitle>
+
+<h1>Create Account</h1>
+
+<FluentStack  Orientation="Orientation.Vertical" VerticalGap="25" Style="padding-bottom:30px">
+    <FluentDivider Style="width: 100%;" Role="DividerRole.Presentation" />
+    <FluentMessageBarProvider Section="CreateAccount_Form" MaxMessageCount="5" />
+    <EditForm Model="@AccountModel" FormName="createAccount" method="post" OnValidSubmit="CreateUserAccount" OnInvalidSubmit="CreateUserAccount">
+        <DataAnnotationsValidator />
+        <FluentStack Orientation="Orientation.Vertical" VerticalGap="35" >
+            <FluentGrid Justify="JustifyContent.SpaceBetween">
+                <FluentLabel Typo="Typography.H6">Account Type </FluentLabel>
+                <FluentSpacer />
+
+                <FluentRadioGroup @bind-Value="@AccountModel.AccountType">
+
+                    <FluentRadio Value="@AccountType.Customer">@AccountType.Customer</FluentRadio>
+                    <FluentRadio Value="@AccountType.Restaurant">@AccountType.Restaurant</FluentRadio>
+                    <FluentRadio Value="@AccountType.Rider">@AccountType.Rider</FluentRadio>
+
+                </FluentRadioGroup>
+
+                <FluentValidationMessage For="@(() => AccountModel.AccountType)" />
+            </FluentGrid>
+
+            <FluentGrid>
+                <FluentLabel Typo="Typography.H6">Name </FluentLabel>
+                <FluentSpacer />
+
+                <FluentTextField Name="AccountName"
+                                 TextFieldType="TextFieldType.Text"
+                                 @bind-Value="@AccountModel.Name" />
+
+                <FluentValidationMessage For="@(() => AccountModel.Name)" />
+            </FluentGrid>
+
+            <FluentGrid>
+                <FluentLabel Typo="Typography.H6">Email </FluentLabel>
+                <FluentSpacer />
+
+                <FluentTextField Name="Email" 
+                                 TextFieldType="TextFieldType.Email" 
+                                 @bind-Value="@AccountModel.Email" />
+
+                <FluentValidationMessage For="@(() => AccountModel.Email)" />
+            </FluentGrid>
+
+            <FluentGrid>
+                <FluentLabel Typo="Typography.H6">Password </FluentLabel>
+                <FluentSpacer />
+
+                <FluentTextField Name="Password" 
+                                 TextFieldType="TextFieldType.Password"
+                                 @bind-Value="@AccountModel.Password" />
+
+                <FluentValidationMessage For="@(() => AccountModel.Password)" />
+            </FluentGrid>
+
+            <FluentGrid>
+                <FluentLabel Typo="Typography.H6">Confirm Password </FluentLabel>
+                <FluentSpacer />
+
+                <FluentTextField Name="ConfirmPassword" 
+                                 TextFieldType="TextFieldType.Password" 
+                                 @bind-Value="@AccountModel.ConfirmPassword" />
+
+                <FluentValidationMessage For="@(() => AccountModel.ConfirmPassword)" />
+            </FluentGrid>
+
+            <FluentGrid Style="padding-bottom:10px;">
+                <FluentLabel Typo="Typography.H6">Profile Photo </FluentLabel>
+                <FluentSpacer />
+
+                <FluentInputFile Name="ProfileImage"
+                                 Id="ProfileImageUploader"
+                                 Accept="image/*" 
+                                 MaximumFileSize="@MaximumFileSize" 
+                                 OnInputFileChange="SelectedFileChanged"
+                                 Style="border: 1px dashed var(--accent-fill-rest); width:100%">
+
+                    <ChildContent>
+                        <label for="my-file-uploader">
+                            <FluentIcon Value="@(new Icons.Regular.Size24.ArrowUpload())" />
+                        </label>
+
+                        <div>
+                            Drag the image here you wish to upload,
+                            or <label for="ProfileImageUploader">browse</label>
+                            it<span style="color: red;">*</span>.
+                            <br />
+                            <em>Maximum of 2MB image allowed.</em>
+                        </div>
+                    </ChildContent>
+
+                </FluentInputFile>
+            </FluentGrid>
+
+            @if(AccountModel.AccountType == AccountType.Restaurant)
+            {
+                <InputLocation Location="@AccountModel.Location"/>
+            }
+
+            <FluentGrid>
+                <FluentButton Appearance="Appearance.Accent" Type="ButtonType.Submit" Style="width:100%">Create</FluentButton>
+            </FluentGrid>
+        </FluentStack>
+    </EditForm>
+</FluentStack>
+
+@code
+{
+    [SupplyParameterFromForm]
+    private CreateAccountModel AccountModel { get; set; }
+    private const long MaximumFileSize = 2 * 1024 * 1024;
+
+    protected override async Task OnInitializedAsync()
+    {
+        AccountModel ??= new();
+    }
+
+    /// <summary>
+    /// When the EditForm is valid, procced with creating the user account.
+    /// </summary>
+    /// <param name="editContext"></param>
+    /// <returns></returns>
+    private async Task CreateUserAccount(EditContext editContext)
+    {
+        MessageService.Clear();
+
+        var accountID = await AccountService.CreateAccountAsync(new Account()
+        {
+            AccountType = AccountModel.AccountType,
+            Email = AccountModel.Email,
+            Name = AccountModel.Name,
+            ProfileImageURL = await UploadImageAsync(AccountModel.ProfileImage)
+        });
+
+        await IdentityManagementService.CreateIdentityProfileAsync(new AppIdentityUser()
+        {
+            AccountID = accountID,
+            Email = AccountModel.Email,
+        }, AccountModel.Password, Enum.GetName<AccountType>(AccountModel.AccountType), "/");
+    }
+
+    private async ValueTask<string?> UploadImageAsync(IBrowserFile? image)
+    {
+        if (image != null)
+        {
+            using var fileStream = image.OpenReadStream();
+            var fileUrl = await FileService.UploadFileAsync(fileStream, image.Name);
+            return fileUrl;
+        }
+        return "";
+    }
+
+    private void SelectedFileChanged(InputFileChangeEventArgs e) => AccountModel.ProfileImage = e.File;
+
+    private class CreateAccountModel
+    {
+        [Required]
+        [Display(Name = "Account Type")]
+        public AccountType AccountType { get; set; } = AccountType.Customer;
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Name must be less than {1} characters")]
+        [Display(Name = "Name")]
+        public string Name { get; set; } = "";
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Email must be less than {1} characters")]
+        [EmailAddress(ErrorMessage = "Invalid email format")]
+        [Display(Name = "Email")]
+        public string Email { get; set; } = "";
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 8)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; } = "";
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; } = "";
+
+        [Display(Name = "Profile Image")]
+        public IBrowserFile? ProfileImage { get; set; } 
+
+        public Location Location { get; set; } = new ();
+    }
+}

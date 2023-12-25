@@ -1,0 +1,56 @@
+﻿@rendermode InteractiveServer
+@using TastyEatsBD.WebApp.Components.Theme
+
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JavaScript
+@inject ThemeService Theme
+
+<div class="navmenu">
+    <input type="checkbox" id="navmenu-toggle" />
+    <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
+        <FluentNavMenu Id="main-menu" Width="250" Collapsible="true" Title="Navigation menu" @bind-Expanded="expanded">
+            <FluentNavLink Icon="@(new Icons.Regular.Size20.Home())" Href="/" Match="NavLinkMatch.All">Home</FluentNavLink>
+            <AuthorizeView>
+                <Authorized>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size20.PersonAccounts())" Href="Account/Manage">@context.User.Identity?.Name</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size24.Color())" Href="Settings">Settings</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size20.PersonArrowLeft())" OnClick="OnLogoutClicked"> Logout
+                        <form action="Account/Logout" method="post" style="display:none;">
+                            <AntiforgeryToken />
+                            <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                            <FluentButton Type="ButtonType.Submit" @ref="LogoutButtonRef"></FluentButton>
+                        </form>
+                    </FluentNavLink>
+                </Authorized>
+                <NotAuthorized>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size20.PersonAdd())" Href="Account/Create">Register</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size20.PersonArrowRight())" Href="Account/Login" Match="NavLinkMatch.All">Login</FluentNavLink>
+                </NotAuthorized>
+            </AuthorizeView>
+        </FluentNavMenu>
+    </nav>
+</div>
+
+@code {
+    private bool expanded = true;
+    private string? currentUrl;
+    private FluentButton LogoutButtonRef;
+    private bool isFirstRender = true;
+
+    protected override Task OnInitializedAsync()
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        if(isFirstRender)
+        {
+            isFirstRender = false;
+            return Theme.SetUserThemeAsync();
+        }
+        return Task.CompletedTask;
+    }
+
+    private void OnLogoutClicked(MouseEventArgs e)
+    {
+        JavaScript.InvokeVoidAsync("BlazorEvent.click", LogoutButtonRef.Element).GetAwaiter().GetResult();
+    }
+}
+

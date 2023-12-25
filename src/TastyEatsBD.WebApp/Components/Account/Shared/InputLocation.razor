@@ -1,0 +1,83 @@
+﻿@attribute [StreamRendering]
+
+@using TastyEatsBD.Core.Entities
+@using System.ComponentModel.DataAnnotations
+
+@inject IJSRuntime JSRuntime
+
+<FluentGrid Style="outline:double; outline-color:burlywood">
+    <FluentStack Orientation="Orientation.Vertical" VerticalGap="30" Style="padding:30px">
+        <FluentLabel Typo="Typography.H4">Geographic Location</FluentLabel>
+
+        <FluentGrid>
+            <FluentLabel Typo="Typography.H6">Latitude</FluentLabel>
+            <FluentSpacer />
+            <FluentNumberField Name="Latitude" @bind-Value="@Location.Latitude" Step="0.000001" />
+            <FluentValidationMessage For="@(() => Location.Latitude)" />
+        </FluentGrid>
+
+        <FluentGrid>
+            <FluentLabel Typo="Typography.H6">Longitude</FluentLabel>
+            <FluentSpacer />
+            <FluentNumberField Name="Longitude" @bind-Value="@Location.Longitude" Step="0.0000001" />
+            <FluentValidationMessage For="@(() => Location.Longitude)" />
+        </FluentGrid>
+
+        <FluentButton IconStart="@(new Icons.Regular.Size16.LocationAdd())" Appearance="Appearance.Outline" OnClick="@GetGeoLocation">Use Current Location</FluentButton>
+    </FluentStack>
+</FluentGrid>
+
+<FluentGrid Style="padding-top:10px">
+    <FluentLabel Typo="Typography.H6">Street Address</FluentLabel>
+    <FluentSpacer />
+    <FluentTextField Name="StreetAddress" TextFieldType="TextFieldType.Text" @bind-Value="@Location.StreetAddress" />
+    <FluentValidationMessage For="@(() => Location.StreetAddress)" />
+</FluentGrid>
+
+<FluentGrid>
+    <FluentLabel Typo="Typography.H6">Area</FluentLabel>
+    <FluentSpacer />
+    <FluentTextField Name="Area" TextFieldType="TextFieldType.Text" @bind-Value="@Location.Area" />
+    <FluentValidationMessage For="@(() => Location.Area)" />
+</FluentGrid>
+
+<FluentGrid>
+    <FluentLabel Typo="Typography.H6">City</FluentLabel>
+    <FluentSpacer />
+    <FluentTextField Name="City" TextFieldType="TextFieldType.Text" @bind-Value="@Location.City" />
+    <FluentValidationMessage For="@(() => Location.City)" />
+</FluentGrid>
+
+<FluentGrid>
+    <FluentLabel Typo="Typography.H6">Zip Code</FluentLabel>
+    <FluentSpacer />
+    <FluentTextField Name="ZipCode" TextFieldType="TextFieldType.Text" @bind-Value="@Location.ZipCode" />
+    <FluentValidationMessage For="@(() => Location.ZipCode)" />
+</FluentGrid>
+
+@code {
+    [Parameter]
+    public Location Location { get; set; }
+
+    private async Task GetGeoLocation(MouseEventArgs eventArgs)
+    {
+        var dotNetReference = DotNetObjectReference.Create(this);
+        await JSRuntime.InvokeVoidAsync("BlazorEvent.getGeolocation", dotNetReference);
+    }
+
+    [JSInvokable]
+    public void SetLocation(double latitude, double longitude)
+    {
+        // Set the location on your account object or handle it as needed
+        Location.Latitude = Convert.ToDecimal(Math.Round(latitude));
+        Location.Longitude = Convert.ToDecimal(Math.Round(longitude));
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public void HandleGeolocationError(string errorMessage)
+    {
+        // Handle the error, like showing a message to the user
+        Console.WriteLine($"Geolocation error: {errorMessage}");
+    }
+}

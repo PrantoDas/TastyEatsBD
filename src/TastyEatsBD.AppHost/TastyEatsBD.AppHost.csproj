@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,12 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TastyEatsBD.ApiService\TastyEatsBD.WebApi.csproj" />
-    <ProjectReference Include="..\TastyEatsBD.Web\TastyEatsBD.WebClient.csproj" />
+    <ProjectReference Include="..\TastyEatsBD.WebApp\TastyEatsBD.WebApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting" Version="8.0.0-preview.1.23557.2" />
+    <PackageReference Include="Aspire.Hosting" Version="8.0.0-preview.2.23619.3" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.2.1" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.DataGrid.EntityFrameworkAdapter" Version="4.2.1" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.2.1" />
   </ItemGroup>
 
 </Project>

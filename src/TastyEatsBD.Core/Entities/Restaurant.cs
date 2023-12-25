@@ -1,14 +1,23 @@
-﻿namespace TastyEatsBD.Core.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class Restaurant
+namespace TastyEatsBD.Core.Entities;
+
+public class Restaurant : EntityBase
 {
-    public int ID { get; set; }
+    [Required(ErrorMessage = "Account ID is required")]
+    [Display(Name = "Account ID")]
     public int AccountID { get; set; }
+
+    [Required(ErrorMessage = "Restaurant name is required")]
+    [StringLength(100, ErrorMessage = "Restaurant name must be under {1} characters")]
+    [Display(Name = "Restaurant Name")]
+    public string RestaurantName { get; set; }
+
+    [Required(ErrorMessage = "Location ID is required")]
+    [Display(Name = "Location ID")]
     public int LocationID { get; set; }
+
+    [Display(Name = "Is Available")]
     public bool IsAvailable { get; set; }
-    public DateTime CreatedOn { get; set; }
-    public string CreatedBy { get; set; }
-    public DateTime? ModifiedOn { get; set; }
-    public string ModifiedBy { get; set; }
 }
 

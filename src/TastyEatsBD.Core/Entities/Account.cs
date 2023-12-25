@@ -1,19 +1,33 @@
-﻿using System.Security;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using TastyEatsBD.Core.Enums;
 
 namespace TastyEatsBD.Core.Entities;
 
-public class Account
+public class Account : EntityBase
 {
-    public int ID { get; set; }
-    public string AccountType { get; set; }
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public SecureString Password { get; set; }
-    public decimal? Rating { get; set; }
-    public string ProfileImageUrl { get; set; }
-    public DateTime CreatedOn { get; set; }
-    public string CreatedBy { get; set; }
-    public DateTime? ModifiedOn { get; set; }
-    public string ModifiedBy { get; set; }
-}
+    [Required(ErrorMessage = "Account type is required")]
+    [Display(Name = "Account Type")]
+    public AccountType AccountType { get; set; }
 
+    [Required(ErrorMessage = "Name is required")]
+    [StringLength(50, ErrorMessage = "Name must be less than {1} characters")]
+    [Display(Name = "Name")]
+    public string Name { get; set; }
+
+    [Required(ErrorMessage = "Email is required")]
+    [StringLength(50, ErrorMessage = "Email must be less than {1} characters")]
+    [EmailAddress(ErrorMessage = "Invalid email format")]
+    [Display(Name = "Email")]
+    public string Email { get; set; }
+
+    [Range(0, 5, ErrorMessage = "Rating must be between {1} and {2}")]
+    [Column(TypeName = "decimal(1, 1)")]
+    [Display(Name = "Rating")]
+    public decimal? Rating { get; set; }
+
+    [StringLength(300, ErrorMessage = "Profile image URL must be less than {1} characters")]
+    [Display(Name = "Profile Image URL")]
+    [DataType(DataType.ImageUrl, ErrorMessage = "Invalid URL format")]
+    public string? ProfileImageURL { get; set; }
+}

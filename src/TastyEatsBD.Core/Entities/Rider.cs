@@ -1,12 +1,13 @@
-﻿namespace TastyEatsBD.Core.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class Rider
+namespace TastyEatsBD.Core.Entities;
+
+public class Rider : EntityBase
 {
-    public int ID { get; set; }
+    [Required(ErrorMessage = "Account ID is required")]
+    [Display(Name = "Account ID")]
     public int AccountID { get; set; }
+
+    [Display(Name = "Is Available")]
     public bool IsAvailable { get; set; }
-    public DateTime CreatedOn { get; set; }
-    public string CreatedBy { get; set; }
-    public DateTime? ModifiedOn { get; set; }
-    public string ModifiedBy { get; set; }
 }
