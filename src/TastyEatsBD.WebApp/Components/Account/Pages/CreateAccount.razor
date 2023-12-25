@@ -25,92 +25,99 @@
     <FluentMessageBarProvider Section="CreateAccount_Form" MaxMessageCount="5" />
     <EditForm Model="@AccountModel" FormName="createAccount" method="post" OnValidSubmit="CreateUserAccount" OnInvalidSubmit="CreateUserAccount">
         <DataAnnotationsValidator />
-        <FluentStack Orientation="Orientation.Vertical" VerticalGap="35" >
+        <FluentStack Orientation="Orientation.Vertical" VerticalGap="25" >
             <FluentGrid Justify="JustifyContent.SpaceBetween">
-                <FluentLabel Typo="Typography.H6">Account Type </FluentLabel>
-                <FluentSpacer />
-
-                <FluentRadioGroup @bind-Value="@AccountModel.AccountType">
-
-                    <FluentRadio Value="@AccountType.Customer">@AccountType.Customer</FluentRadio>
-                    <FluentRadio Value="@AccountType.Restaurant">@AccountType.Restaurant</FluentRadio>
-                    <FluentRadio Value="@AccountType.Rider">@AccountType.Rider</FluentRadio>
-
-                </FluentRadioGroup>
-
-                <FluentValidationMessage For="@(() => AccountModel.AccountType)" />
+                <FluentGridItem >
+                    <FluentLabel Typo="Typography.H6">Account Type </FluentLabel>
+                </FluentGridItem>
+                <FluentGridItem Justify="JustifyContent.FlexEnd" lg="9" md="9" sm="9" xl="9" xs="3" xxl="9">
+                    <FluentRadioGroup @bind-Value="@AccountModel.AccountType">
+                        <FluentRadio Value="@AccountType.Customer">@AccountType.Customer</FluentRadio>
+                        <FluentRadio Value="@AccountType.Restaurant">@AccountType.Restaurant</FluentRadio>
+                        <FluentRadio Value="@AccountType.Rider">@AccountType.Rider</FluentRadio>
+                    </FluentRadioGroup>
+                    <FluentValidationMessage For="@(() => AccountModel.AccountType)" />
+                </FluentGridItem>
             </FluentGrid>
 
-            <FluentGrid>
-                <FluentLabel Typo="Typography.H6">Name </FluentLabel>
-                <FluentSpacer />
-
-                <FluentTextField Name="AccountName"
-                                 TextFieldType="TextFieldType.Text"
-                                 @bind-Value="@AccountModel.Name" />
-
-                <FluentValidationMessage For="@(() => AccountModel.Name)" />
+            <FluentGrid Justify="JustifyContent.SpaceBetween">
+                <FluentGridItem>
+                    <FluentLabel Typo="Typography.H6">Name </FluentLabel>
+                </FluentGridItem>
+                <FluentGridItem>
+                    <FluentTextField Name="AccountName"
+                                     TextFieldType="TextFieldType.Text"
+                                     @bind-Value="@AccountModel.Name" />
+                    <FluentValidationMessage For="@(() => AccountModel.Name)" />
+                </FluentGridItem>
             </FluentGrid>
 
-            <FluentGrid>
-                <FluentLabel Typo="Typography.H6">Email </FluentLabel>
-                <FluentSpacer />
+            <FluentGrid Justify="JustifyContent.SpaceBetween">
+                <FluentGridItem>
+                    <FluentLabel Typo="Typography.H6">Email </FluentLabel>
+                </FluentGridItem>
+                <FluentGridItem>
+                    <FluentTextField Name="Email" 
+                                     TextFieldType="TextFieldType.Email" 
+                                     @bind-Value="@AccountModel.Email" />
 
-                <FluentTextField Name="Email" 
-                                 TextFieldType="TextFieldType.Email" 
-                                 @bind-Value="@AccountModel.Email" />
-
-                <FluentValidationMessage For="@(() => AccountModel.Email)" />
+                    <FluentValidationMessage For="@(() => AccountModel.Email)" />
+                </FluentGridItem>
             </FluentGrid>
 
-            <FluentGrid>
-                <FluentLabel Typo="Typography.H6">Password </FluentLabel>
-                <FluentSpacer />
+            <FluentGrid Justify="JustifyContent.SpaceBetween">
+                <FluentGridItem>
+                    <FluentLabel Typo="Typography.H6">Password </FluentLabel>
+                </FluentGridItem>
+                <FluentGridItem>
+                    <FluentTextField Name="Password" 
+                                     TextFieldType="TextFieldType.Password"
+                                     @bind-Value="@AccountModel.Password" />
 
-                <FluentTextField Name="Password" 
-                                 TextFieldType="TextFieldType.Password"
-                                 @bind-Value="@AccountModel.Password" />
-
-                <FluentValidationMessage For="@(() => AccountModel.Password)" />
+                    <FluentValidationMessage For="@(() => AccountModel.Password)" />
+                </FluentGridItem>
             </FluentGrid>
 
-            <FluentGrid>
-                <FluentLabel Typo="Typography.H6">Confirm Password </FluentLabel>
-                <FluentSpacer />
+            <FluentGrid  Justify="JustifyContent.SpaceBetween">
+                <FluentGridItem>
+                    <FluentLabel Typo="Typography.H6">Confirm Password </FluentLabel>
+                </FluentGridItem>
+                <FluentGridItem>
+                    <FluentTextField Name="ConfirmPassword" 
+                                     TextFieldType="TextFieldType.Password" 
+                                     @bind-Value="@AccountModel.ConfirmPassword" />
 
-                <FluentTextField Name="ConfirmPassword" 
-                                 TextFieldType="TextFieldType.Password" 
-                                 @bind-Value="@AccountModel.ConfirmPassword" />
-
-                <FluentValidationMessage For="@(() => AccountModel.ConfirmPassword)" />
+                    <FluentValidationMessage For="@(() => AccountModel.ConfirmPassword)" />
+                </FluentGridItem>
             </FluentGrid>
 
-            <FluentGrid Style="padding-bottom:10px;">
-                <FluentLabel Typo="Typography.H6">Profile Photo </FluentLabel>
-                <FluentSpacer />
+            <FluentGrid Justify="JustifyContent.SpaceBetween">
+                <FluentGridItem>
+                    <FluentLabel Typo="Typography.H6">Profile Photo </FluentLabel>
+                </FluentGridItem>
+                <FluentGridItem>
+                    <FluentInputFile Name="ProfileImage"
+                                     Id="ProfileImageUploader"
+                                     Accept="image/*" 
+                                     MaximumFileSize="@MaximumFileSize" 
+                                     OnInputFileChange="SelectedFileChanged"
+                                     Style="border: 1px dashed var(--accent-fill-rest); width:100%">
 
-                <FluentInputFile Name="ProfileImage"
-                                 Id="ProfileImageUploader"
-                                 Accept="image/*" 
-                                 MaximumFileSize="@MaximumFileSize" 
-                                 OnInputFileChange="SelectedFileChanged"
-                                 Style="border: 1px dashed var(--accent-fill-rest); width:100%">
+                        <ChildContent>
+                            <label for="my-file-uploader">
+                                <FluentIcon Value="@(new Icons.Regular.Size24.ArrowUpload())" />
+                            </label>
 
-                    <ChildContent>
-                        <label for="my-file-uploader">
-                            <FluentIcon Value="@(new Icons.Regular.Size24.ArrowUpload())" />
-                        </label>
-
-                        <div>
-                            Drag the image here you wish to upload,
-                            or <label for="ProfileImageUploader">browse</label>
-                            it<span style="color: red;">*</span>.
-                            <br />
-                            <em>Maximum of 2MB image allowed.</em>
-                        </div>
-                    </ChildContent>
-
-                </FluentInputFile>
+                            <div>
+                                Drag the image here you wish to upload,
+                                or <label for="ProfileImageUploader">browse</label>
+                                it<span style="color: red;">*</span>.
+                                <br />
+                                <em>Maximum of 2MB image allowed.</em>
+                            </div>
+                        </ChildContent>
+                    </FluentInputFile>
+                </FluentGridItem>
             </FluentGrid>
 
             @if(AccountModel.AccountType == AccountType.Restaurant)
@@ -119,7 +126,7 @@
             }
 
             <FluentGrid>
-                <FluentButton Appearance="Appearance.Accent" Type="ButtonType.Submit" Style="width:100%">Create</FluentButton>
+                 <FluentButton Appearance="Appearance.Accent" Type="ButtonType.Submit" Style="width:100%">Create</FluentButton>
             </FluentGrid>
         </FluentStack>
     </EditForm>
@@ -134,6 +141,7 @@
     protected override async Task OnInitializedAsync()
     {
         AccountModel ??= new();
+        MessageService.Clear();
     }
 
     /// <summary>

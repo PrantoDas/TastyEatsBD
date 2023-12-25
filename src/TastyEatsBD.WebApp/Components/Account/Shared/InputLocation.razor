@@ -5,18 +5,18 @@
 
 @inject IJSRuntime JSRuntime
 
-<FluentGrid Style="outline:double; outline-color:burlywood">
+<FluentGrid Justify="JustifyContent.SpaceBetween" Style="outline:double; outline-color:burlywood; margin-top:5px; margin-bottom:5px">
     <FluentStack Orientation="Orientation.Vertical" VerticalGap="30" Style="padding:30px">
         <FluentLabel Typo="Typography.H4">Geographic Location</FluentLabel>
 
-        <FluentGrid>
+        <FluentGrid Justify="JustifyContent.SpaceBetween">
             <FluentLabel Typo="Typography.H6">Latitude</FluentLabel>
             <FluentSpacer />
             <FluentNumberField Name="Latitude" @bind-Value="@Location.Latitude" Step="0.000001" />
             <FluentValidationMessage For="@(() => Location.Latitude)" />
         </FluentGrid>
 
-        <FluentGrid>
+        <FluentGrid Justify="JustifyContent.SpaceBetween">
             <FluentLabel Typo="Typography.H6">Longitude</FluentLabel>
             <FluentSpacer />
             <FluentNumberField Name="Longitude" @bind-Value="@Location.Longitude" Step="0.0000001" />
@@ -27,32 +27,44 @@
     </FluentStack>
 </FluentGrid>
 
-<FluentGrid Style="padding-top:10px">
-    <FluentLabel Typo="Typography.H6">Street Address</FluentLabel>
-    <FluentSpacer />
-    <FluentTextField Name="StreetAddress" TextFieldType="TextFieldType.Text" @bind-Value="@Location.StreetAddress" />
-    <FluentValidationMessage For="@(() => Location.StreetAddress)" />
+<FluentGrid Justify="JustifyContent.SpaceBetween">
+    <FluentGridItem>
+        <FluentLabel Typo="Typography.H6">Street Address</FluentLabel>
+    </FluentGridItem>
+    <FluentGridItem>
+        <FluentTextField Name="StreetAddress" TextFieldType="TextFieldType.Text" @bind-Value="@Location.StreetAddress" />
+        <FluentValidationMessage For="@(() => Location.StreetAddress)" />
+    </FluentGridItem>
 </FluentGrid>
 
-<FluentGrid>
-    <FluentLabel Typo="Typography.H6">Area</FluentLabel>
-    <FluentSpacer />
-    <FluentTextField Name="Area" TextFieldType="TextFieldType.Text" @bind-Value="@Location.Area" />
-    <FluentValidationMessage For="@(() => Location.Area)" />
+<FluentGrid Justify="JustifyContent.SpaceBetween">
+    <FluentGridItem>
+        <FluentLabel Typo="Typography.H6">Area</FluentLabel>
+    </FluentGridItem>
+    <FluentGridItem>
+        <FluentTextField Name="Area" TextFieldType="TextFieldType.Text" @bind-Value="@Location.Area" />
+        <FluentValidationMessage For="@(() => Location.Area)" />
+    </FluentGridItem>
 </FluentGrid>
 
-<FluentGrid>
-    <FluentLabel Typo="Typography.H6">City</FluentLabel>
-    <FluentSpacer />
-    <FluentTextField Name="City" TextFieldType="TextFieldType.Text" @bind-Value="@Location.City" />
-    <FluentValidationMessage For="@(() => Location.City)" />
+<FluentGrid Justify="JustifyContent.SpaceBetween">
+    <FluentGridItem>
+        <FluentLabel Typo="Typography.H6">City</FluentLabel>
+    </FluentGridItem>
+    <FluentGridItem>
+        <FluentTextField Name="City" TextFieldType="TextFieldType.Text" @bind-Value="@Location.City" />
+        <FluentValidationMessage For="@(() => Location.City)" />
+    </FluentGridItem>
 </FluentGrid>
 
-<FluentGrid>
-    <FluentLabel Typo="Typography.H6">Zip Code</FluentLabel>
-    <FluentSpacer />
-    <FluentTextField Name="ZipCode" TextFieldType="TextFieldType.Text" @bind-Value="@Location.ZipCode" />
-    <FluentValidationMessage For="@(() => Location.ZipCode)" />
+<FluentGrid Justify="JustifyContent.SpaceBetween">
+    <FluentGridItem>
+        <FluentLabel Typo="Typography.H6">Zip Code</FluentLabel>
+    </FluentGridItem>
+    <FluentGridItem>
+        <FluentTextField Name="ZipCode" TextFieldType="TextFieldType.Text" @bind-Value="@Location.ZipCode" />
+        <FluentValidationMessage For="@(() => Location.ZipCode)" />
+    </FluentGridItem>
 </FluentGrid>
 
 @code {
