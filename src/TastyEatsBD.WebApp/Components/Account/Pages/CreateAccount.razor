@@ -127,6 +127,7 @@
 
             <FluentGrid>
                  <FluentButton Appearance="Appearance.Accent" Type="ButtonType.Submit" Style="width:100%">Create</FluentButton>
+                 <FluentButton Appearance="Appearance.Accent" Type="ButtonType.Button" Style="width:100%" OnClick="GenerateTestAccounts">Generate Test Accounts</FluentButton>
             </FluentGrid>
         </FluentStack>
     </EditForm>
@@ -178,6 +179,19 @@
         }
         return "";
     }
+
+    // private async Task GenerateTestAccounts(MouseEventArgs e)
+    // {
+    //     var accounts = await AccountService.GetAsync();
+    //     foreach(var account in accounts)
+    //     {
+    //         await IdentityManagementService.CreateTestAccountAsync(new AppIdentityUser()
+    //         {
+    //             AccountID = account.ID,
+    //             Email = account.Email,
+    //         }, "TestAcc@1234", Enum.GetName<AccountType>(AccountModel.AccountType));
+    //     }
+    // }
 
     private void SelectedFileChanged(InputFileChangeEventArgs e) => AccountModel.ProfileImage = e.File;
 

@@ -36,7 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Customer\" />
     <Folder Include="Components\Delivery\" />
     <Folder Include="Components\Restaurant\" />
   </ItemGroup>

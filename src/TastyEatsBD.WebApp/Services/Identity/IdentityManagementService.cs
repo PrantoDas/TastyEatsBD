@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.FluentUI.AspNetCore.Components;
 using System.Text;
@@ -118,5 +120,31 @@ internal class IdentityManagementService
     private void ShowAccountCreatedAsync()
     {
         _toastService.ShowSuccess("Account Successfully Created.");
+    }
+
+    private async Task CreateTestAccountAsync(AppIdentityUser user, string password, string role)
+    {
+        await _userStore.SetUserNameAsync(user, user.Email, CancellationToken.None);
+
+        var emailStore = GetEmailStore();
+        await emailStore.SetEmailAsync(user, user.Email, CancellationToken.None);
+
+        var result = await _userManager.CreateAsync(user, password);
+        if (!result.Succeeded)
+        {
+            await ShowIdentityErrorsAsync(result.Errors);
+            return;
+        }
+        _logger.LogInformation("User created a new account with password.");
+
+        result = await _userManager.AddToRoleAsync(user, role);
+        if (!result.Succeeded)
+        {
+            await ShowIdentityErrorsAsync(result.Errors);
+            return;
+        }
+
+        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        await _userManager.ConfirmEmailAsync(user, code);
     }
 }

@@ -12,7 +12,7 @@ public class Item : EntityBase
     [Required(ErrorMessage = "Item name is required")]
     [StringLength(50, ErrorMessage = "Item name must be less than {1} characters")]
     [Display(Name = "Item Name")]
-    public string ItemName { get; set; }
+    public string Name { get; set; }
 
     [Required(ErrorMessage = "Price is required")]
     [Range(0, double.MaxValue, ErrorMessage = "Price must be a positive value")]

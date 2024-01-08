@@ -1,0 +1,19 @@
+﻿
+<FluentStack Orientation="Orientation.Vertical">
+
+    <FluentSearch Placeholder="Search food & restaurants" Style="width:100%"></FluentSearch>
+    <FluentStack Orientation="Orientation.Vertical" Style="height:calc(80dvh - 30px); overflow-y:scroll; padding:20px;">
+        @for(int i = 0; i < 10; i++)
+        {
+            <FluentCard>
+                <p>Just some content in a card (with a button that does not do anything).</p>
+                <FluentButton Appearance="Appearance.Accent">Hello</FluentButton>
+            </FluentCard>
+        }
+    </FluentStack>
+
+</FluentStack>
+
+@code {
+
+}

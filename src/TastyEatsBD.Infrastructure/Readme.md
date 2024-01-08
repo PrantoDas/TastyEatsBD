@@ -8,7 +8,7 @@ Update-Database MigrationFullName  -Context AppIdentityDbContext
 ~~~
 
 
-### AppIdentityDbContext
+### TastyEatsDbContext
 ~~~ C#
 Add-Migration -Name MigrationName  -Context TastyEatsDbContext -OutputDir Data/Migrations/TastyEatsMigrations
 

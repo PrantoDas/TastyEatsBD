@@ -24,6 +24,7 @@ public class TastyEatsDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.ApplyConfiguration(new AccountConfiguration());
         modelBuilder.ApplyConfiguration(new CustomerConfiguration());
         modelBuilder.ApplyConfiguration(new RestaurantConfiguration());
         modelBuilder.ApplyConfiguration(new RiderConfiguration());
@@ -32,6 +33,7 @@ public class TastyEatsDbContext : DbContext
         modelBuilder.ApplyConfiguration(new ItemOrderConfiguration());
         modelBuilder.ApplyConfiguration(new ItemConfiguration());
         modelBuilder.ApplyConfiguration(new LedgerConfiguration());
+        modelBuilder.ApplyConfiguration(new LocationConfiguration());
         modelBuilder.ApplyConfiguration(new AccountSettingConfiguration());
     }
 }

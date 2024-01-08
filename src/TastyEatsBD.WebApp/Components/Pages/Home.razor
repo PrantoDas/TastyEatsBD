@@ -1,9 +1,21 @@
 ﻿@page "/"
 @attribute [StreamRendering(true)]
 
-<PageTitle>Home</PageTitle>
+@using TastyEatsBD.Core.Constants
+@using TastyEatsBD.WebApp.Components.Customer.Pages
 
-<h3>Eat Tasty Food!</h3>
+<PageTitle>Tasty Eats Bangladesh</PageTitle>
 
-<h1>Order Now!!!</h1>
+<AuthorizeView Roles="@(ApplicationRoles.Customer)">
+    <Authorized>
+        <CustomerHome />
+    </Authorized>
+</AuthorizeView>
 
+<AuthorizeView Roles="@(ApplicationRoles.Restaurant)">
+    <Authorized>
+        <h3>Offer great food items</h3>
+
+        <h1>Process Orders!!!</h1>
+    </Authorized>
+</AuthorizeView>

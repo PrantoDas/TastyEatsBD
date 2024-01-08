@@ -51,36 +51,36 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.AppIdentityMigrations
                     b.HasData(
                         new
                         {
-                            Id = "c525d0c7-a246-46fb-b658-126dd0913625",
-                            ConcurrencyStamp = "689354e6-e930-403e-b1f3-8a7c0cc749f8",
+                            Id = "46e425ed-ac09-4dfa-a5e5-f174d86b5c0e",
+                            ConcurrencyStamp = "0fc1dd81-34a3-4ca0-8513-2051e35c1c8b",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "b0daf294-9519-46c3-8d8b-86f1c4e5bc45",
-                            ConcurrencyStamp = "e19a65d4-74d2-4001-b752-badae5edda63",
+                            Id = "81f6be8e-5c55-4539-8302-f854b5fba63d",
+                            ConcurrencyStamp = "56a83605-9fb9-4f85-b779-9825839bcd2f",
                             Name = "Restaurant",
                             NormalizedName = "RESTAURANT"
                         },
                         new
                         {
-                            Id = "813ca00a-a3eb-4181-839c-586a67b27d7c",
-                            ConcurrencyStamp = "71a50d44-9582-4cad-9fc9-0b8cf9217ba3",
+                            Id = "7fafe134-9230-413e-a2a8-31fcf3ec10b2",
+                            ConcurrencyStamp = "f4e2f341-7362-450f-9b3e-e0dc708f94ee",
                             Name = "Rider",
                             NormalizedName = "RIDER"
                         },
                         new
                         {
-                            Id = "145a9e28-0976-4c28-b5ba-3d1eb208cb4b",
-                            ConcurrencyStamp = "7bf466a3-b4f3-4dba-a27d-a5822ff930d2",
+                            Id = "c2c977bc-be70-491f-b14f-c5c99a0cc48f",
+                            ConcurrencyStamp = "c45c3047-52ec-4343-92c4-e27f14d56042",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "33abfa5f-dc7e-4b21-9a70-d1031482657f",
-                            ConcurrencyStamp = "6a336ece-542c-48e5-a82c-42f40134be6c",
+                            Id = "b3ebd148-574e-475f-ab3c-a45d678f4a71",
+                            ConcurrencyStamp = "2402c073-c1ab-4cdc-9278-3046c5d52887",
                             Name = "CustomerCare",
                             NormalizedName = "CUSTOMERCARE"
                         });

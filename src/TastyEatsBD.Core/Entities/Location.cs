@@ -5,12 +5,12 @@ namespace TastyEatsBD.Core.Entities;
 
 public class Location : EntityBase
 {
-    [Column(TypeName = "decimal(7, 7)")]
+    [Column(TypeName = "decimal(9, 6)")]
     [Display(Name = "Latitude")]
     [Range(-90.0, 90.0, ErrorMessage = "Latitude must be between {1} and {2}")]
     public decimal Latitude { get; set; }
 
-    [Column(TypeName = "decimal(7, 7)")]
+    [Column(TypeName = "decimal(9, 6)")]
     [Display(Name = "Longitude")]
     [Range(-180.0, 180.0, ErrorMessage = "Longitude must be between {1} and {2}")]
     public decimal Longitude { get; set; }

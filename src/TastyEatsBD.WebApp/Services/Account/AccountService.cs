@@ -20,6 +20,12 @@ public class AccountService : IAccountService
         return await db.Accounts.FindAsync(id);
     }
 
+    public async Task<IEnumerable<Account>> GetAsync()
+    {
+        using var db = await CreateDbContext();
+        return await db.Accounts.ToListAsync();
+    }
+
     public async ValueTask<int> CreateAccountAsync(Account account)
     {
         using var db = await CreateDbContext();

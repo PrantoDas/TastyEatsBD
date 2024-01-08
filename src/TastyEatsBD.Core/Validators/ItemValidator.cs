@@ -13,7 +13,7 @@ public class ItemValidator : AbstractValidator<Item>
         RuleFor(item => item.RestaurantID)
             .GreaterThanOrEqualTo(0);
 
-        RuleFor(item => item.ItemName)
+        RuleFor(item => item.Name)
             .NotEmpty()
             .MaximumLength(200); // Assuming 200 is the max length
 

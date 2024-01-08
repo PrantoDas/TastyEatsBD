@@ -23,4 +23,8 @@
     <ProjectReference Include="..\TastyEatsBD.Core\TastyEatsBD.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
 </Project>
