@@ -1,5 +1,6 @@
 ﻿@using TastyEatsBD.Core.Entities;
 @using TastyEatsBD.Core.Interfaces;
+@using TastyEatsBD.Core.DTOs;
 
 @inject IRestaurantDiscoveryService RestaurantDiscoveryService
 @inject IFileService FileService
@@ -13,25 +14,25 @@
 
     <FluentGrid Style="height:calc(80dvh - 30px); overflow-y:scroll;">
 
-        @if(Items == null)
+        @if(Restaurants == null)
         {
             <FluentGridItem >
                 <CustomLoader/>
             </FluentGridItem>
         }
-        else if(Items.Any())
+        else if(Restaurants.Any())
         {
-            @foreach (var item in Items)
+            @foreach (var restaurant in Restaurants)
             {
                 <FluentGridItem>
                     <FluentCard Style="padding:0px;" Width="360px;" Height="300px">
                         <FluentStack Orientation="Orientation.Vertical">
                             <div style="height:150px; overflow:hidden">
-                                <ImageLoader PhotoURL="@item.PhotoURL" Style="width:100%;" />
+                                <ImageLoader PhotoURL="@restaurant.Account.ProfileImageURL" Style="width:100%;" />
                             </div>
                             <div style="padding:20px;">
-                                <FluentLabel>@item.Name</FluentLabel>
-                                <p>@item.Description</p>
+                                <FluentLabel>@restaurant.Account.Name</FluentLabel>
+                                <p>@restaurant.Account.Rating</p>
                             </div>
                         </FluentStack>
                     </FluentCard>
@@ -41,7 +42,7 @@
         else
         {
             <FluentGridItem>
-                <FluentLabel>No available items found. Please try again.</FluentLabel>
+                <FluentLabel>No available restaurants found. Please try again.</FluentLabel>
             </FluentGridItem>
         }
     </FluentGrid>
@@ -49,15 +50,15 @@
 </FluentStack>
 
 @code {
-    private List<Item> DefaultItems;
-    private List<Item> Items;
+    private List<RestaurantInfo> DefaultRestaurants;
+    private List<RestaurantInfo> Restaurants;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            DefaultItems = await RestaurantDiscoveryService.GetTopRatedItemsAsync(150);
-            Items = DefaultItems;
+            DefaultRestaurants = await RestaurantDiscoveryService.GetTopRatedRestaurantsAsync(15);
+            Restaurants = DefaultRestaurants;
             StateHasChanged();
         }
     }
@@ -66,11 +67,11 @@
     {
         if (string.IsNullOrWhiteSpace(searchText))
         {
-            Items = DefaultItems;
+            Restaurants = DefaultRestaurants;
         }
         else
         {
-            Items = await RestaurantDiscoveryService.SearchItemsAndResturantsAsync(searchText.Trim(), 150);
+            Restaurants = await RestaurantDiscoveryService.SearchItemsAndResturantsAsync(searchText.Trim(), 15);
         }
     }
 }

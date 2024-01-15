@@ -1,8 +1,8 @@
-﻿using TastyEatsBD.Core.Entities;
+﻿using TastyEatsBD.Core.DTOs;
 
 namespace TastyEatsBD.Core.Interfaces;
 public interface IRestaurantDiscoveryService
 {
-    Task<List<Item>> GetTopRatedItemsAsync(int count);
-    Task<List<Item>> SearchItemsAndResturantsAsync(string searchKey, int count);
+    Task<List<RestaurantInfo>> GetTopRatedRestaurantsAsync(int count);
+    Task<List<RestaurantInfo>> SearchItemsAndResturantsAsync(string searchKey, int count);
 }

@@ -14,13 +14,16 @@ else
 @code {
     [Parameter] public string PhotoURL { get; set; }
     [Parameter] public string Style { get; set; }
-    
+
     private string Base64Image;
     private bool IsImageLoaded = false;
 
 
     protected override async Task OnInitializedAsync()
     {
+        if (string.IsNullOrEmpty(PhotoURL))
+            return;
+
         Base64Image = await GetBase64PhotoAsync(PhotoURL);
         IsImageLoaded = true;
     }
