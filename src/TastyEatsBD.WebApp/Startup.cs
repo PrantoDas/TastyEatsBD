@@ -6,7 +6,6 @@ using TastyEatsBD.Core.Entities;
 using TastyEatsBD.Infrastructure.Data;
 using TastyEatsBD.ServiceDefaults;
 using TastyEatsBD.WebApp.Components;
-using TastyEatsBD.WebApp.Components.Theme;
 using TastyEatsBD.WebApp.Services.Identity;
 
 public class Startup
@@ -89,7 +88,7 @@ public class Startup
 
         // Add additional endpoints required by the Identity /Account Razor components.
         app.MapAdditionalIdentityEndpoints();
-        
+
         //app.UseCustomMiddleware();
     }
 

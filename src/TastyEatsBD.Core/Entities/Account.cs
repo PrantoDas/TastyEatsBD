@@ -22,7 +22,7 @@ public class Account : EntityBase
     public string Email { get; set; }
 
     [Range(0, 5, ErrorMessage = "Rating must be between {1} and {2}")]
-    [Column(TypeName = "decimal(1, 1)")]
+    [Column(TypeName = "decimal(2, 1)")]
     [Display(Name = "Rating")]
     public decimal? Rating { get; set; }
 

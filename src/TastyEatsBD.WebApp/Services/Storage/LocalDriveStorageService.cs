@@ -46,11 +46,21 @@ public class LocalDriveStorageService : IFileService
         return false;
     }
 
-    public async Task<Stream> GetFileAsync(string filePath)
+    public async Task<Stream> GetFileStreamAsync(string filePath)
     {
         if (File.Exists(filePath))
         {
-            return new FileStream(filePath, FileMode.Open);
+            return new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+        }
+        return null;
+    }
+
+    public async Task<byte[]> GetFileAsync(string filePath)
+    {
+        await Task.Delay(1000);
+        if (File.Exists(filePath))
+        {
+            return await File.ReadAllBytesAsync(filePath);
         }
         return null;
     }

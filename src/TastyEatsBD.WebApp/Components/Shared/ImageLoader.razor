@@ -1,0 +1,33 @@
+﻿@using TastyEatsBD.Core.Interfaces;
+
+@inject IFileService FileService
+
+@if (IsImageLoaded)
+{
+    <img src="data:image/jpeg;base64,@Base64Image" style="@Style"/>
+}
+else
+{
+    <CustomLoader />
+}
+
+@code {
+    [Parameter] public string PhotoURL { get; set; }
+    [Parameter] public string Style { get; set; }
+    
+    private string Base64Image;
+    private bool IsImageLoaded = false;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        Base64Image = await GetBase64PhotoAsync(PhotoURL);
+        IsImageLoaded = true;
+    }
+
+    private async Task<string> GetBase64PhotoAsync(string photoURL)
+    {
+        return Convert.ToBase64String(await FileService.GetFileAsync(photoURL));
+    }
+}
+

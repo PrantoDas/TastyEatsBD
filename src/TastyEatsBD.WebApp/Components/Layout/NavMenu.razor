@@ -1,9 +1,5 @@
-﻿@rendermode InteractiveServer
-@using TastyEatsBD.WebApp.Components.Theme
-
-@inject NavigationManager NavigationManager
+﻿@inject NavigationManager NavigationManager
 @inject IJSRuntime JavaScript
-@inject ThemeService Theme
 
 <div class="navmenu">
     <input type="checkbox" id="navmenu-toggle" />
@@ -40,11 +36,6 @@
     protected override Task OnInitializedAsync()
     {
         currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
-        if(isFirstRender)
-        {
-            isFirstRender = false;
-            return Theme.SetUserThemeAsync();
-        }
         return Task.CompletedTask;
     }
 

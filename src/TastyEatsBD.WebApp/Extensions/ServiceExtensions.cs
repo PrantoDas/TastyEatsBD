@@ -4,6 +4,7 @@ using TastyEatsBD.Core.Interfaces;
 using TastyEatsBD.WebApp.Components.Theme;
 using TastyEatsBD.WebApp.Services.Account;
 using TastyEatsBD.WebApp.Services.Identity;
+using TastyEatsBD.WebApp.Services.Restaurant;
 using TastyEatsBD.WebApp.Services.Storage;
 
 public static class ServiceExtensions
@@ -19,6 +20,7 @@ public static class ServiceExtensions
         services.AddScoped<IdentityManagementService>();
         services.AddScoped<IAccountService, AccountService>();
         services.AddScoped<IFileService, LocalDriveStorageService>();
+        services.AddScoped<IRestaurantDiscoveryService, RestaurantDiscoveryService>();
 
         return services;
     }

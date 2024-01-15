@@ -27,7 +27,7 @@ public interface IFileService
     /// </summary>
     /// <param name="filePath">The path of the file to retrieve.</param>
     /// <returns>The file stream.</returns>
-    Task<Stream> GetFileAsync(string filePath);
+    Task<Stream> GetFileStreamAsync(string filePath);
 
     /// <summary>
     /// Checks if a file exists at the given path.
@@ -35,5 +35,6 @@ public interface IFileService
     /// <param name="filePath">The file path to check.</param>
     /// <returns>True if the file exists, otherwise false.</returns>
     Task<bool> FileExistsAsync(string filePath);
+    Task<byte[]> GetFileAsync(string filePath);
 }
 

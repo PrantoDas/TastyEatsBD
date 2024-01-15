@@ -35,10 +35,10 @@ internal class ThemeService
             return;
         }
 
-        var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext).ConfigureAwait(false);
+        var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext);
 
-        using var dbContext = await _dbContextFactory.CreateDbContextAsync().ConfigureAwait(false);
-        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync().ConfigureAwait(false);
+        using var dbContext = await _dbContextFactory.CreateDbContextAsync();
+        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync();
 
         if (userSettings == null)
             return;
@@ -61,10 +61,10 @@ internal class ThemeService
 
     private async Task UpdateLuminanceAsync(StandardLuminance luminance)
     {
-        var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext).ConfigureAwait(false);
+        var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext);
 
-        using var dbContext = await _dbContextFactory.CreateDbContextAsync().ConfigureAwait(false);
-        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync().ConfigureAwait(false);
+        using var dbContext = await _dbContextFactory.CreateDbContextAsync();
+        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync();
 
         if (userSettings == null)
         {
@@ -73,7 +73,7 @@ internal class ThemeService
                 AccountID = user.AccountID,
                 IsDarkMode = luminance == StandardLuminance.DarkMode
             };
-            await dbContext.AddAsync(userSettings).ConfigureAwait(false);
+            await dbContext.AddAsync(userSettings);
         }
         else
         {
@@ -81,16 +81,16 @@ internal class ThemeService
             userSettings.IsDarkMode = luminance == StandardLuminance.DarkMode;
             dbContext.Update(userSettings);
         }
-        await dbContext.SaveChangesAsync().ConfigureAwait(false);
+        await dbContext.SaveChangesAsync();
     }
 
 
     private async Task UpdateThemeColorAsync(string color)
     {
-        var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext).ConfigureAwait(false);
+        var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext);
 
-        using var dbContext = await _dbContextFactory.CreateDbContextAsync().ConfigureAwait(false);
-        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync().ConfigureAwait(false);
+        using var dbContext = await _dbContextFactory.CreateDbContextAsync();
+        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync();
 
         if (userSettings == null)
         {
@@ -99,7 +99,7 @@ internal class ThemeService
                 AccountID = user.AccountID,
                 ThemeColor = color
             };
-            await dbContext.AddAsync(userSettings).ConfigureAwait(false);
+            await dbContext.AddAsync(userSettings);
         }
         else
         {
@@ -107,7 +107,7 @@ internal class ThemeService
             userSettings.ThemeColor = color;
             dbContext.Update(userSettings);
         }
-        await dbContext.SaveChangesAsync().ConfigureAwait(false);
+        await dbContext.SaveChangesAsync();
     }
 
     private void SetLuminance(StandardLuminance luminance) => _baseLayerLuminance.WithDefault(luminance.GetLuminanceValue());
