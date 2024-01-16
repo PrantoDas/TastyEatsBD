@@ -1,0 +1,10 @@
+﻿@using TastyEatsBD.Core.DTOs;
+
+<p>
+    @Restaurant.Restaurant.RestaurantName
+</p>
+
+@code {
+    [Parameter]
+    public RestaurantInfo Restaurant { get; set; }
+}

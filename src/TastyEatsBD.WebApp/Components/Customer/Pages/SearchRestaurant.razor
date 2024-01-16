@@ -1,0 +1,102 @@
+﻿@using TastyEatsBD.Core.Entities;
+@using TastyEatsBD.Core.Interfaces;
+@using TastyEatsBD.Core.DTOs;
+@using TastyEatsBD.WebApp.Components.Customer.Shared;
+
+@inject IRestaurantDiscoveryService RestaurantDiscoveryService
+@inject IFileService FileService
+
+<FluentStack Orientation="Orientation.Vertical">
+    <FluentSearch Placeholder="Search food & restaurants"
+                  ValueChanged=@SearchByNameAsync
+                  Style="margin-bottom:20px;" />
+
+    <FluentGrid Style="height:calc(80dvh - 30px); overflow-y:scroll;">
+
+        @if (Restaurants == null)
+        {
+            <FluentGridItem>
+                <CustomLoader />
+            </FluentGridItem>
+        }
+        else if (Restaurants.Any())
+        {
+            @foreach (var restaurant in Restaurants)
+            {
+                <FluentGridItem>
+                    <FluentCard Style="padding:0px;cursor:pointer" Width="360px;" Height="330px" @onclick="@(e => OnRestaurantClicked.InvokeAsync(restaurant))">
+                        <FluentStack Orientation="Orientation.Vertical" VerticalGap="0">
+                            <div style="height:150px; overflow:hidden">
+                                <ImageLoader PhotoURL="@restaurant.Account.ProfileImageURL" Style="width:100%;" />
+                            </div>
+                            <FluentStack Orientation="Orientation.Vertical" Style="padding:15px;">
+                                <FluentGrid Justify="JustifyContent.SpaceBetween">
+                                    <FluentGridItem>
+                                        <FluentLabel Typo="Typography.H4">@restaurant.Restaurant.RestaurantName</FluentLabel>
+                                    </FluentGridItem>
+                                    <FluentGridItem>
+                                        <FluentLabel Weight="FontWeight.Bold" Typo="Typography.Subject">
+                                            @restaurant.Account.Rating <FluentIcon Value="@(new Icons.Filled.Size20.Star())" />
+                                        </FluentLabel>
+                                    </FluentGridItem>
+                                </FluentGrid>
+                                <FluentSpacer />
+                                <RestaurantItem Item="@FindItem(restaurant.Items)" />
+                            </FluentStack>
+                        </FluentStack>
+                    </FluentCard>
+                </FluentGridItem>
+            }
+        }
+        else
+        {
+            <FluentGridItem>
+                <FluentLabel>No available restaurants found. Please try again.</FluentLabel>
+            </FluentGridItem>
+        }
+    </FluentGrid>
+
+</FluentStack>
+
+@code {
+    [Parameter] 
+    public EventCallback<RestaurantInfo> OnRestaurantClicked { get; set; }
+
+    private List<RestaurantInfo> DefaultRestaurants;
+    private List<RestaurantInfo> Restaurants;
+    private string SearchText = string.Empty;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await SetDefaultResturants();
+            StateHasChanged();
+        }
+    }
+
+    private async Task SearchByNameAsync(string searchText)
+    {
+        SearchText = searchText;
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            Restaurants = DefaultRestaurants;
+        }
+        else
+        {
+            Restaurants = await RestaurantDiscoveryService.SearchItemsAndResturantsAsync(searchText.Trim(), 15);
+        }
+    }
+
+    private async Task SetDefaultResturants()
+    {
+        DefaultRestaurants = await RestaurantDiscoveryService.GetTopRatedRestaurantsAsync(15);
+        Restaurants = DefaultRestaurants;
+    }
+
+    private Item FindItem(List<Item> items)
+    {
+        var item = items.FirstOrDefault(i => i.Name.Contains(SearchText));
+        return item ?? items.FirstOrDefault();
+    }
+}

@@ -1,0 +1,25 @@
+﻿@using TastyEatsBD.Core.Entities;
+
+<FluentGrid Justify="JustifyContent.SpaceBetween">
+    <FluentGridItem sm="9">
+        <FluentStack Orientation="Orientation.Vertical">
+            <FluentLabel Typo="Typography.Subject" Weight="FontWeight.Bold">
+                @Item.Name
+            </FluentLabel>
+            <FluentLabel Typo="Typography.Body">
+                @Item.Description
+            </FluentLabel>
+            <FluentLabel>
+                <FluentIcon Value="@(new Icons.Regular.Size20.Money())" /> @Item.Price
+            </FluentLabel>
+        </FluentStack>
+    </FluentGridItem>
+    <FluentGridItem sm="3" Justify="JustifyContent.FlexEnd">
+        <ImageLoader PhotoURL="@Item.PhotoURL" Style="height:50px;border-radius:10px" />
+    </FluentGridItem>
+</FluentGrid>
+
+@code {
+    [Parameter] 
+    public Item Item { get; set; }
+}

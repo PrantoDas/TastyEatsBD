@@ -1,77 +1,39 @@
 ﻿@using TastyEatsBD.Core.Entities;
 @using TastyEatsBD.Core.Interfaces;
 @using TastyEatsBD.Core.DTOs;
+@using TastyEatsBD.WebApp.Components.Customer.Shared;
 
 @inject IRestaurantDiscoveryService RestaurantDiscoveryService
 @inject IFileService FileService
 
 @rendermode InteractiveServer
 
-<FluentStack Orientation="Orientation.Vertical">
-    <FluentSearch Placeholder="Search food & restaurants"
-                  ValueChanged=@SearchByNameAsync
-                  Style="margin-bottom:20px;"/>
-
-    <FluentGrid Style="height:calc(80dvh - 30px); overflow-y:scroll;">
-
-        @if(Restaurants == null)
-        {
-            <FluentGridItem >
-                <CustomLoader/>
-            </FluentGridItem>
-        }
-        else if(Restaurants.Any())
-        {
-            @foreach (var restaurant in Restaurants)
-            {
-                <FluentGridItem>
-                    <FluentCard Style="padding:0px;" Width="360px;" Height="300px">
-                        <FluentStack Orientation="Orientation.Vertical">
-                            <div style="height:150px; overflow:hidden">
-                                <ImageLoader PhotoURL="@restaurant.Account.ProfileImageURL" Style="width:100%;" />
-                            </div>
-                            <div style="padding:20px;">
-                                <FluentLabel>@restaurant.Account.Name</FluentLabel>
-                                <p>@restaurant.Account.Rating</p>
-                            </div>
-                        </FluentStack>
-                    </FluentCard>
-                </FluentGridItem>
-            }
-        }
-        else
-        {
-            <FluentGridItem>
-                <FluentLabel>No available restaurants found. Please try again.</FluentLabel>
-            </FluentGridItem>
-        }
-    </FluentGrid>
-
-</FluentStack>
+@switch (CurrentUIState)
+{
+    case UIState.Search:
+        <SearchRestaurant OnRestaurantClicked="LoadResturantMenuAsync" />
+        break;
+    case UIState.RestaurantMenu:
+        <RestaurantMenu Restaurant="@SelectedResturant" />
+        break;
+}
 
 @code {
-    private List<RestaurantInfo> DefaultRestaurants;
-    private List<RestaurantInfo> Restaurants;
+    private UIState CurrentUIState { get; set; } = UIState.Search;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    private RestaurantInfo SelectedResturant { get; set; }
+
+    private async Task LoadResturantMenuAsync(RestaurantInfo restaurantInfo)
     {
-        if (firstRender)
-        {
-            DefaultRestaurants = await RestaurantDiscoveryService.GetTopRatedRestaurantsAsync(15);
-            Restaurants = DefaultRestaurants;
-            StateHasChanged();
-        }
+        CurrentUIState = UIState.RestaurantMenu;
+        SelectedResturant = restaurantInfo;
+        StateHasChanged();
     }
 
-    private async Task SearchByNameAsync(string searchText)
+    private enum UIState
     {
-        if (string.IsNullOrWhiteSpace(searchText))
-        {
-            Restaurants = DefaultRestaurants;
-        }
-        else
-        {
-            Restaurants = await RestaurantDiscoveryService.SearchItemsAndResturantsAsync(searchText.Trim(), 15);
-        }
+        Search,
+        RestaurantMenu,
+        OrderComponent // Add other states as needed
     }
 }

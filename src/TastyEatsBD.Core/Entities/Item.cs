@@ -21,7 +21,7 @@ public class Item : EntityBase
     [Display(Name = "Price")]
     public decimal Price { get; set; }
 
-    [StringLength(300, ErrorMessage = "Description must be less than {1} characters")]
+    [StringLength(60, ErrorMessage = "Description must be less than {1} characters")]
     [Display(Name = "Description")]
     public string Description { get; set; }
 
