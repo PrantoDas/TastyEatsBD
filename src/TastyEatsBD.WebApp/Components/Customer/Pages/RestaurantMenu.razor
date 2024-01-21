@@ -1,10 +1,56 @@
-﻿@using TastyEatsBD.Core.DTOs;
+﻿@page "/restaurant/{RestaurantID:int}"
 
-<p>
-    @Restaurant.Restaurant.RestaurantName
-</p>
+@using TastyEatsBD.Core.Interfaces;
+@using TastyEatsBD.Core.Constants;
+@using TastyEatsBD.Core.DTOs;
+@using Microsoft.AspNetCore.Authorization;
+
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+@attribute [Authorize(Roles = $"{ApplicationRoles.Customer}")]
+
+
+@inject IRestaurantDiscoveryService RestaurantDiscoveryService
+@inject NavigationManager NavigationManager
+
+@if(Restaurant == null)
+{
+    <CustomLoader />
+}
+else
+{
+    <FluentGrid Justify="JustifyContent.FlexStart" Spacing="5">
+        <FluentGridItem>
+            <ImageLoader PhotoURL="@Restaurant.Account.ProfileImageURL" Style="height:100px; border-radius:10px; " />
+        </FluentGridItem>
+
+        <FluentGridItem Justify="JustifyContent.Center" Style="align-items: flex-start; flex-direction:column;">
+            <FluentLabel Typo="Typography.PageTitle" Weight="FontWeight.Bold" Style="margin-bottom:10px">
+                @Restaurant.Restaurant.RestaurantName
+            </FluentLabel>
+            <FluentLabel Typo="Typography.H3">
+                <FluentIcon Value="@(new Icons.Regular.Size32.Star())" /> @Restaurant.Account.Rating
+            </FluentLabel>
+        </FluentGridItem>
+    </FluentGrid>
+}
 
 @code {
     [Parameter]
-    public RestaurantInfo Restaurant { get; set; }
+    public int RestaurantID { get; set; }
+
+    private RestaurantInfo? Restaurant { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Restaurant = await RestaurantDiscoveryService.GetResturantAsync(RestaurantID);
+            if (Restaurant == null)
+            {
+                NavigationManager.NavigateTo("/");
+            }
+            StateHasChanged();
+        }
+    }
 }

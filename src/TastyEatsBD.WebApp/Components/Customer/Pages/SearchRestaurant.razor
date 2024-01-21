@@ -1,14 +1,23 @@
-﻿@using TastyEatsBD.Core.Entities;
+﻿@page "/search"
+
+@using TastyEatsBD.Core.Entities;
+@using TastyEatsBD.Core.Constants;
 @using TastyEatsBD.Core.Interfaces;
 @using TastyEatsBD.Core.DTOs;
 @using TastyEatsBD.WebApp.Components.Customer.Shared;
+@using Microsoft.AspNetCore.Authorization;
+
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+@attribute [Authorize(Roles = $"{ApplicationRoles.Customer}")]
 
 @inject IRestaurantDiscoveryService RestaurantDiscoveryService
-@inject IFileService FileService
+@inject NavigationManager NavigationManager
 
 <FluentStack Orientation="Orientation.Vertical">
     <FluentSearch Placeholder="Search food & restaurants"
                   ValueChanged=@SearchByNameAsync
+                  Value="@SearchText"
                   Style="margin-bottom:20px;" />
 
     <FluentGrid Style="height:calc(80dvh - 30px); overflow-y:scroll;">
@@ -24,7 +33,7 @@
             @foreach (var restaurant in Restaurants)
             {
                 <FluentGridItem>
-                    <FluentCard Style="padding:0px;cursor:pointer" Width="360px;" Height="330px" @onclick="@(e => OnRestaurantClicked.InvokeAsync(restaurant))">
+                    <FluentCard Style="padding:0px;cursor:pointer" Width="360px;" Height="330px" @onclick="@(e => LoadResturantMenuAsync(restaurant))">
                         <FluentStack Orientation="Orientation.Vertical" VerticalGap="0">
                             <div style="height:150px; overflow:hidden">
                                 <ImageLoader PhotoURL="@restaurant.Account.ProfileImageURL" Style="width:100%;" />
@@ -59,44 +68,36 @@
 </FluentStack>
 
 @code {
-    [Parameter] 
-    public EventCallback<RestaurantInfo> OnRestaurantClicked { get; set; }
+    [SupplyParameterFromQuery]
+    public string? SearchText { get; set; }
 
-    private List<RestaurantInfo> DefaultRestaurants;
+    private string _searchText = string.Empty;
     private List<RestaurantInfo> Restaurants;
-    private string SearchText = string.Empty;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await SetDefaultResturants();
-            StateHasChanged();
+            await SearchByNameAsync(SearchText);
         }
+    }
+
+    private async Task LoadResturantMenuAsync(RestaurantInfo restaurantInfo)
+    {
+        NavigationManager.NavigateTo($"/Restaurant/{restaurantInfo.Restaurant.ID}");
     }
 
     private async Task SearchByNameAsync(string searchText)
     {
-        SearchText = searchText;
-        if (string.IsNullOrWhiteSpace(searchText))
-        {
-            Restaurants = DefaultRestaurants;
-        }
-        else
-        {
-            Restaurants = await RestaurantDiscoveryService.SearchItemsAndResturantsAsync(searchText.Trim(), 15);
-        }
-    }
-
-    private async Task SetDefaultResturants()
-    {
-        DefaultRestaurants = await RestaurantDiscoveryService.GetTopRatedRestaurantsAsync(15);
-        Restaurants = DefaultRestaurants;
+        _searchText = searchText ?? string.Empty;
+        NavigationManager.NavigateTo($"/search?SearchText={Uri.EscapeDataString(_searchText)}", false);
+        Restaurants = await RestaurantDiscoveryService.SearchItemsAndResturantsAsync(_searchText.Trim(), 15);
+        StateHasChanged();
     }
 
     private Item FindItem(List<Item> items)
     {
-        var item = items.FirstOrDefault(i => i.Name.Contains(SearchText));
+        var item = items.FirstOrDefault(i => i.Name.Contains(_searchText));
         return item ?? items.FirstOrDefault();
     }
 }

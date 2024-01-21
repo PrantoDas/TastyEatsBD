@@ -1,17 +1,16 @@
 ﻿@page "/"
-@attribute [StreamRendering]
 
 @using TastyEatsBD.Core.Constants
 @using TastyEatsBD.WebApp.Components.Customer.Pages
 
+@attribute [StreamRendering]
+@rendermode InteractiveServer
+
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
 
 <PageTitle>Tasty Eats Bangladesh</PageTitle>
-
-<AuthorizeView Roles="@(ApplicationRoles.Customer)">
-    <Authorized>
-        <CustomerHome />
-    </Authorized>
-</AuthorizeView>
 
 <AuthorizeView Roles="@(ApplicationRoles.Restaurant)">
     <Authorized>
@@ -20,3 +19,20 @@
         <h1>Process Orders!!!</h1>
     </Authorized>
 </AuthorizeView>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated && user.IsInRole(ApplicationRoles.Customer))
+        {
+            NavigationManager.NavigateTo("/search");
+        }
+        else
+        {
+            // Optionally handle the case for users who are not customers
+        }
+    }
+}

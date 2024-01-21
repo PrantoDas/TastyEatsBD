@@ -15,29 +15,30 @@ public partial class RestaurantDiscoveryService : IRestaurantDiscoveryService
         _dbContextFactory = dbContextFactory;
     }
 
-    public async Task<List<RestaurantInfo>> GetTopRatedRestaurantsAsync(int count)
+    public async Task<List<RestaurantInfo>> SearchItemsAndResturantsAsync(string searchKey, int count)
     {
-        await Task.Delay(1000);
         using var db = await CreateDbContext();
 
         // Query to get available restaurants
         var availableRestaurants = db.Restaurants
-            .Where(restaurant => restaurant.IsAvailable);
+            .Join(db.Accounts,
+                  restaurant => restaurant.AccountID,
+                  account => account.ID,
+                  (restaurant, account) => new { Restaurant = restaurant, Account = account })
+            .Where(x => x.Restaurant.IsAvailable);
 
         // Query to get available items
         var availableItems = db.Items
             .Where(item => item.IsAvailable);
 
-        // Combine the queries, include accounts, and order by account rating
-        var result = await availableRestaurants
-            .Join(db.Accounts,
-                  restaurant => restaurant.AccountID,
-                  account => account.ID,
-                  (restaurant, account) => new { Restaurant = restaurant, Account = account })
-            .Join(availableItems,
-                  restaurantAccount => restaurantAccount.Restaurant.ID,
+        var result = await availableItems
+            .Join(availableRestaurants,
                   item => item.RestaurantID,
-                  (restaurantAccount, item) => new { restaurantAccount.Restaurant, restaurantAccount.Account, Item = item })
+                  info => info.Restaurant.ID,
+                  (item, info) => new { Item = item, Restaurant = info.Restaurant, Account = info.Account })
+            .Where(x => 
+                x.Item.Name.Contains(searchKey) 
+                || x.Restaurant.RestaurantName.Contains(searchKey))
             .GroupBy(x => x.Restaurant.ID)
             .OrderByDescending(info => info.First().Account.Rating)
             .Take(count)
@@ -53,44 +54,27 @@ public partial class RestaurantDiscoveryService : IRestaurantDiscoveryService
         return result;
     }
 
-    public async Task<List<RestaurantInfo>> SearchItemsAndResturantsAsync(string searchKey, int count)
+
+    public async Task<RestaurantInfo> GetResturantAsync(int restaurantID)
     {
         await Task.Delay(1000);
         using var db = await CreateDbContext();
 
-
         // Query to get available restaurants
-        var availableRestaurants = db.Restaurants
-            .Where(restaurant => restaurant.IsAvailable);
-
-        // Query to get available items
-        var availableItems = db.Items
-            .Where(item => item.IsAvailable);
-
-        // Combine the queries, include accounts, and order by account rating
-        var result = await availableRestaurants
+        var restaurantInfo = await db.Restaurants
             .Join(db.Accounts,
                   restaurant => restaurant.AccountID,
                   account => account.ID,
-                  (restaurant, account) => new { Restaurant = restaurant, Account = account })
-            .Join(availableItems,
-                  restaurantAccount => restaurantAccount.Restaurant.ID,
-                  item => item.RestaurantID,
-                  (restaurantAccount, item) => new { restaurantAccount.Restaurant, restaurantAccount.Account, Item = item })
-            .Where(x => x.Item.Name.Contains(searchKey) || x.Restaurant.RestaurantName.Contains(searchKey))
-            .GroupBy(x => x.Restaurant.ID)
-            .OrderByDescending(info => info.First().Account.Rating)
-            .Take(count)
-            .Select(group => new RestaurantInfo
-            {
-                Restaurant = group.First().Restaurant,
-                Account = group.First().Account,
-                Items = group.Select(x => x.Item).ToList()
-            })
-            .AsNoTracking()
+                  (restaurant, account) => new RestaurantInfo { Restaurant = restaurant, Account = account })
+            .Where(x => x.Restaurant.IsAvailable && x.Restaurant.ID == restaurantID)
+            .FirstOrDefaultAsync();
+
+        // Combine the queries, include accounts, and order by account rating
+        restaurantInfo.Items = await db.Items
+            .Where(item => item.IsAvailable && item.RestaurantID == restaurantID)
             .ToListAsync();
 
-        return result;
+        return restaurantInfo;
     }
 
     private Task<TastyEatsDbContext> CreateDbContext() => _dbContextFactory.CreateDbContextAsync();
