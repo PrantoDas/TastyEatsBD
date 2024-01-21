@@ -30,11 +30,6 @@ internal class ThemeService
 
     public async Task SetUserThemeAsync()
     {
-        if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated == false)
-        {
-            return;
-        }
-
         var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext);
 
         using var dbContext = await _dbContextFactory.CreateDbContextAsync();
@@ -45,6 +40,18 @@ internal class ThemeService
 
         SetLuminance(userSettings.IsDarkMode ? StandardLuminance.DarkMode : StandardLuminance.LightMode);
         SetThemeColor(userSettings.ThemeColor);
+    }
+    public async Task<(StandardLuminance Luminance, string Color)> GetUserThemeAsync()
+    {
+        var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext);
+
+        using var dbContext = await _dbContextFactory.CreateDbContextAsync();
+        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync();
+
+        if (userSettings == null)
+            return (StandardLuminance.LightMode, "default");
+
+        return (userSettings.IsDarkMode ? StandardLuminance.DarkMode : StandardLuminance.LightMode, userSettings.ThemeColor);
     }
 
     public async Task ChangeLuminanceAsync(StandardLuminance luminance)

@@ -43,6 +43,17 @@
 
     public OfficeColor _officeColor { get; set; }
 
+    protected override async Task OnInitializedAsync()
+    {
+        var (luminance, color) = await Theme.GetUserThemeAsync();
+        
+        _themeMode = luminance == StandardLuminance.DarkMode ? DesignThemeModes.Dark : DesignThemeModes.Light;
+
+        _officeColor = Enum.GetValues(typeof(OfficeColor))
+                .Cast<OfficeColor>()
+                .FirstOrDefault(officeColor => officeColor.GetDescription() == color);
+    }
+
     Task OnLuminanceChanged(LuminanceChangedEventArgs e)
     {
         var x = $"{(e.Mode == DesignThemeModes.System ? "System" : "")} {(e.IsDark ? "Dark" : "Light")}";

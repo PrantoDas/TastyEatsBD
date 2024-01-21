@@ -4,14 +4,11 @@
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Identity
 @using TastyEatsBD.Core.Entities
-@using TastyEatsBD.WebApp.Components.Theme
 
 @inject SignInManager<AppIdentityUser> SignInManager
 @inject ILogger<Login> Logger
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager
-@inject ThemeService Theme
-
 
 <PageTitle>Log in</PageTitle>
 
@@ -96,7 +93,6 @@
         if (result.Succeeded)
         {
             Logger.LogInformation("User logged in.");
-            await Theme.SetUserThemeAsync();
             RedirectManager.RedirectTo(ReturnUrl);
         }
         else if (result.RequiresTwoFactor)
