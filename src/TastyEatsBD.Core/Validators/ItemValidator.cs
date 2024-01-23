@@ -7,10 +7,10 @@ public class ItemValidator : AbstractValidator<Item>
 {
     public ItemValidator()
     {
-        RuleFor(item => item.ID)
+        RuleFor(item => item.Id)
             .GreaterThanOrEqualTo(0);
 
-        RuleFor(item => item.RestaurantID)
+        RuleFor(item => item.RestaurantId)
             .GreaterThanOrEqualTo(0);
 
         RuleFor(item => item.Name)

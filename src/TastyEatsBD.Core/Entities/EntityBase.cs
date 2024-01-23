@@ -7,8 +7,8 @@ public class EntityBase
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [Display(Name = "ID")]
-    public int ID { get; set; }
+    [Display(Name = "Id")]
+    public int Id { get; set; }
 
     [Required(ErrorMessage = "Creator name is required")]
     [StringLength(50, ErrorMessage = "Creator name must be less than {1} characters")]

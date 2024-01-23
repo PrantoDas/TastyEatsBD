@@ -7,7 +7,7 @@ public class LocationValidator : AbstractValidator<Location>
 {
     public LocationValidator()
     {
-        RuleFor(loc => loc.ID).GreaterThanOrEqualTo(0);
+        RuleFor(loc => loc.Id).GreaterThanOrEqualTo(0);
         // Latitude and Longitude validation can be more specific based on valid ranges
         RuleFor(loc => loc.StreetAddress).NotEmpty();
         RuleFor(loc => loc.City).NotEmpty();

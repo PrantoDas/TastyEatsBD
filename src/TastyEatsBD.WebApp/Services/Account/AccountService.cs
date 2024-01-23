@@ -35,7 +35,7 @@ public class AccountService : IAccountService
         db.Accounts.Add(account);
         await db.SaveChangesAsync();
 
-        return account.ID;
+        return account.Id;
     }
 
     public async Task UpdateAccountAsync(Account account)

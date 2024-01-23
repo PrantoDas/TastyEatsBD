@@ -7,10 +7,10 @@ public class CustomerValidator : AbstractValidator<Customer>
 {
     public CustomerValidator()
     {
-        RuleFor(customer => customer.ID)
+        RuleFor(customer => customer.Id)
             .GreaterThanOrEqualTo(0);
 
-        RuleFor(customer => customer.AccountID)
+        RuleFor(customer => customer.AccountId)
             .GreaterThanOrEqualTo(0);
 
         // CreatedOn usually doesn't need validation

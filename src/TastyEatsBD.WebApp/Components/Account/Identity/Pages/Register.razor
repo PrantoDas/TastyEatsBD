@@ -62,7 +62,7 @@
     public async Task RegisterUser(EditContext editContext)
     {
         var user = CreateUser();
-        user.AccountID = new Random().Next(1, 20000);
+        user.AccountId = new Random().Next(1, 20000);
 
         await UserStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
         var emailStore = GetEmailStore();

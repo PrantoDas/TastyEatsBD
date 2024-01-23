@@ -6,7 +6,7 @@ public class AccountValidator : AbstractValidator<Account>
 {
     public AccountValidator()
     {
-        RuleFor(account => account.ID)
+        RuleFor(account => account.Id)
             .GreaterThanOrEqualTo(0);
 
         RuleFor(account => account.AccountType)

@@ -9,7 +9,7 @@ public class RiderConfiguration : IEntityTypeConfiguration<Rider>
     public void Configure(EntityTypeBuilder<Rider> builder)
     {
         // AccountID - Foreign Key to Account
-        builder.HasIndex(r => r.AccountID).HasDatabaseName("IDX_Rider_AccountID");
+        builder.HasIndex(r => r.AccountId).HasDatabaseName("IDX_Rider_AccountID");
 
         builder.HasData(GetRiderSeedData());
     }
@@ -18,16 +18,16 @@ public class RiderConfiguration : IEntityTypeConfiguration<Rider>
     {
         var riders = new List<Rider>
         {
-            new Rider { ID = 1, AccountID = 12, IsAvailable = true },
-            new Rider { ID = 2, AccountID = 13, IsAvailable = false },
-            new Rider { ID = 3, AccountID = 14, IsAvailable = true },
-            new Rider { ID = 4, AccountID = 15, IsAvailable = true },
-            new Rider { ID = 5, AccountID = 16, IsAvailable = false },
-            new Rider { ID = 6, AccountID = 17, IsAvailable = true },
-            new Rider { ID = 7, AccountID = 18, IsAvailable = false },
-            new Rider { ID = 8, AccountID = 19, IsAvailable = true },
-            new Rider { ID = 9, AccountID = 20, IsAvailable = true },
-            new Rider { ID = 10, AccountID = 21, IsAvailable = false }
+            new Rider { Id = 1, AccountId = 12, IsAvailable = true },
+            new Rider { Id = 2, AccountId = 13, IsAvailable = false },
+            new Rider { Id = 3, AccountId = 14, IsAvailable = true },
+            new Rider { Id = 4, AccountId = 15, IsAvailable = true },
+            new Rider { Id = 5, AccountId = 16, IsAvailable = false },
+            new Rider { Id = 6, AccountId = 17, IsAvailable = true },
+            new Rider { Id = 7, AccountId = 18, IsAvailable = false },
+            new Rider { Id = 8, AccountId = 19, IsAvailable = true },
+            new Rider { Id = 9, AccountId = 20, IsAvailable = true },
+            new Rider { Id = 10, AccountId = 21, IsAvailable = false }
         };
         return riders;
     }

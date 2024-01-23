@@ -9,10 +9,10 @@ public class RestaurantConfiguration : IEntityTypeConfiguration<Restaurant>
     public void Configure(EntityTypeBuilder<Restaurant> builder)
     {
         // AccountID - Foreign Key to Account
-        builder.HasIndex(r => r.AccountID).HasDatabaseName("IDX_Restaurant_AccountID");
+        builder.HasIndex(r => r.AccountId).HasDatabaseName("IDX_Restaurant_AccountID");
 
         // LocationID - Foreign Key to Location
-        builder.HasIndex(r => r.LocationID).HasDatabaseName("IDX_Restaurant_LocationID");
+        builder.HasIndex(r => r.LocationId).HasDatabaseName("IDX_Restaurant_LocationID");
 
         // RestaurantName - Need to make it full text searchable later on using a migration script
         // builder.HasIndex(r => r.RestaurantName).HasDatabaseName("IDX_Restaurant_RestaurantName");
@@ -24,16 +24,16 @@ public class RestaurantConfiguration : IEntityTypeConfiguration<Restaurant>
     {
         var restaurants = new List<Restaurant>
         {
-            new Restaurant { ID = 1, AccountID = 2, RestaurantName = "Dhaka Delights", LocationID = 1 },
-            new Restaurant { ID = 2, AccountID = 3, RestaurantName = "Chittagong Eats", LocationID = 2 },
-            new Restaurant { ID = 3, AccountID = 4, RestaurantName = "Sylhet Spices", LocationID = 3 },
-            new Restaurant { ID = 4, AccountID = 5, RestaurantName = "Rajshahi Recipes", LocationID = 4 },
-            new Restaurant { ID = 5, AccountID = 6, RestaurantName = "Khulna Kitchen", LocationID = 5 },
-            new Restaurant { ID = 6, AccountID = 7, RestaurantName = "Barisal Bites", LocationID = 6 },
-            new Restaurant { ID = 7, AccountID = 8, RestaurantName = "Rangpur Relish", LocationID = 7 },
-            new Restaurant { ID = 8, AccountID = 9, RestaurantName = "Mymensingh Munch", LocationID = 8 },
-            new Restaurant { ID = 9, AccountID = 10, RestaurantName = "Comilla Cuisine", LocationID = 9 },
-            new Restaurant { ID = 10, AccountID = 11, RestaurantName = "Gazipur Gourmet", LocationID = 10 }
+            new Restaurant { Id = 1, AccountId = 2, RestaurantName = "Dhaka Delights", LocationId = 1 },
+            new Restaurant { Id = 2, AccountId = 3, RestaurantName = "Chittagong Eats", LocationId = 2 },
+            new Restaurant { Id = 3, AccountId = 4, RestaurantName = "Sylhet Spices", LocationId = 3 },
+            new Restaurant { Id = 4, AccountId = 5, RestaurantName = "Rajshahi Recipes", LocationId = 4 },
+            new Restaurant { Id = 5, AccountId = 6, RestaurantName = "Khulna Kitchen", LocationId = 5 },
+            new Restaurant { Id = 6, AccountId = 7, RestaurantName = "Barisal Bites", LocationId = 6 },
+            new Restaurant { Id = 7, AccountId = 8, RestaurantName = "Rangpur Relish", LocationId = 7 },
+            new Restaurant { Id = 8, AccountId = 9, RestaurantName = "Mymensingh Munch", LocationId = 8 },
+            new Restaurant { Id = 9, AccountId = 10, RestaurantName = "Comilla Cuisine", LocationId = 9 },
+            new Restaurant { Id = 10, AccountId = 11, RestaurantName = "Gazipur Gourmet", LocationId = 10 }
         };
         return restaurants;
     }

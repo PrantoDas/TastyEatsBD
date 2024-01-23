@@ -33,7 +33,7 @@ internal class ThemeService
         var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext);
 
         using var dbContext = await _dbContextFactory.CreateDbContextAsync();
-        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync();
+        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountId == user.AccountId).FirstOrDefaultAsync();
 
         if (userSettings == null)
             return;
@@ -46,7 +46,7 @@ internal class ThemeService
         var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext);
 
         using var dbContext = await _dbContextFactory.CreateDbContextAsync();
-        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync();
+        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountId == user.AccountId).FirstOrDefaultAsync();
 
         if (userSettings == null)
             return (StandardLuminance.LightMode, "default");
@@ -71,13 +71,13 @@ internal class ThemeService
         var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext);
 
         using var dbContext = await _dbContextFactory.CreateDbContextAsync();
-        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync();
+        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountId == user.AccountId).FirstOrDefaultAsync();
 
         if (userSettings == null)
         {
             userSettings = new()
             {
-                AccountID = user.AccountID,
+                AccountId = user.AccountId,
                 IsDarkMode = luminance == StandardLuminance.DarkMode
             };
             await dbContext.AddAsync(userSettings);
@@ -97,13 +97,13 @@ internal class ThemeService
         var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext);
 
         using var dbContext = await _dbContextFactory.CreateDbContextAsync();
-        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountID == user.AccountID).FirstOrDefaultAsync();
+        var userSettings = await dbContext.AccountSettings.Where(a => a.AccountId == user.AccountId).FirstOrDefaultAsync();
 
         if (userSettings == null)
         {
             userSettings = new()
             {
-                AccountID = user.AccountID,
+                AccountId = user.AccountId,
                 ThemeColor = color
             };
             await dbContext.AddAsync(userSettings);

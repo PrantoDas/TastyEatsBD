@@ -9,6 +9,6 @@ public class AccountSettingConfiguration : IEntityTypeConfiguration<AccountSetti
     public void Configure(EntityTypeBuilder<AccountSetting> builder)
     {
         // AccountID - Foreign Key to Account
-        builder.HasIndex(a => a.AccountID).HasDatabaseName("IDX_AccountSetting_AccountID");
+        builder.HasIndex(a => a.AccountId).HasDatabaseName("IDX_AccountSetting_AccountID");
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TastyEatsBD.Core.Enums;
 
@@ -24,10 +25,25 @@ public class Account : EntityBase
     [Range(0, 5, ErrorMessage = "Rating must be between {1} and {2}")]
     [Column(TypeName = "decimal(2, 1)")]
     [Display(Name = "Rating")]
-    public decimal? Rating { get; set; }
+    public float? Rating { get; set; }
 
     [StringLength(300, ErrorMessage = "Profile image URL must be less than {1} characters")]
     [Display(Name = "Profile Image URL")]
     [DataType(DataType.ImageUrl, ErrorMessage = "Invalid URL format")]
     public string? ProfileImageURL { get; set; }
+
+
+    #region Navigation Properties
+
+    public virtual AccountSetting? AccountSetting { get; set; }
+
+    public virtual Customer? Customer { get; set; }
+
+    public virtual Restaurant? Restaurant { get; set; }
+
+    public virtual Rider? Rider { get; set; }
+
+    public virtual Ledger? Ledger { get; set; }
+
+    #endregion
 }

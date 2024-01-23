@@ -7,8 +7,8 @@ public class LedgerValidator : AbstractValidator<Ledger>
 {
     public LedgerValidator()
     {
-        RuleFor(l => l.ID).GreaterThanOrEqualTo(0);
-        RuleFor(l => l.AccountID).GreaterThanOrEqualTo(0);
+        RuleFor(l => l.Id).GreaterThanOrEqualTo(0);
+        RuleFor(l => l.AccountId).GreaterThanOrEqualTo(0);
         RuleFor(l => l.Amount).GreaterThanOrEqualTo(0);
         RuleFor(l => l.TransactionType).NotEmpty();
         RuleFor(l => l.Description).NotEmpty();

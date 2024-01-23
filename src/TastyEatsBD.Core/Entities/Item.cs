@@ -1,13 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TastyEatsBD.Core.Entities;
 
 public class Item : EntityBase
 {
-    [Required(ErrorMessage = "Restaurant ID is required")]
-    [Display(Name = "Restaurant ID")]
-    public int RestaurantID { get; set; }
+    [Required(ErrorMessage = "Restaurant Id is required")]
+    [Display(Name = "Restaurant Id")]
+    public int RestaurantId { get; set; }
+
+    [DeleteBehavior(DeleteBehavior.NoAction)]
+    public virtual Restaurant? Restaurant { get; set; }
 
     [Required(ErrorMessage = "Item name is required")]
     [StringLength(50, ErrorMessage = "Item name must be less than {1} characters")]
@@ -19,7 +23,7 @@ public class Item : EntityBase
     [Column(TypeName = "decimal(10, 2)")]
     [DataType(DataType.Currency)]
     [Display(Name = "Price")]
-    public decimal Price { get; set; }
+    public float Price { get; set; }
 
     [StringLength(60, ErrorMessage = "Description must be less than {1} characters")]
     [Display(Name = "Description")]
@@ -40,4 +44,6 @@ public class Item : EntityBase
     [DataType(DataType.ImageUrl, ErrorMessage = "Invalid URL format")]
     [Display(Name = "Photo URL")]
     public string? PhotoURL { get; set; }
+
+    public virtual ICollection<ItemOrder>? ItemOrders { get; }
 }

@@ -3,5 +3,5 @@
 namespace TastyEatsBD.Core.Entities;
 public class AppIdentityUser : IdentityUser
 {
-    public int AccountID { get; set; }
+    public int AccountId { get; set; }
 }

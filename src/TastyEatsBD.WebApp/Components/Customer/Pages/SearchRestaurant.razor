@@ -84,7 +84,7 @@
 
     private async Task LoadResturantMenuAsync(RestaurantInfo restaurantInfo)
     {
-        NavigationManager.NavigateTo($"/Restaurant/{restaurantInfo.Restaurant.ID}");
+        NavigationManager.NavigateTo($"/Restaurant/{restaurantInfo.Restaurant.Id}");
     }
 
     private async Task SearchByNameAsync(string searchText)

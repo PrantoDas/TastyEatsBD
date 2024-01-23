@@ -7,16 +7,16 @@ public class DeliveryOrderValidator : AbstractValidator<DeliveryOrder>
 {
     public DeliveryOrderValidator()
     {
-        RuleFor(deliveryOrder => deliveryOrder.ID)
+        RuleFor(deliveryOrder => deliveryOrder.Id)
             .GreaterThanOrEqualTo(0);
 
-        RuleFor(deliveryOrder => deliveryOrder.OrderID)
+        RuleFor(deliveryOrder => deliveryOrder.OrderId)
             .GreaterThanOrEqualTo(0);
 
-        RuleFor(deliveryOrder => deliveryOrder.RestaurantID)
+        RuleFor(deliveryOrder => deliveryOrder.RestaurantId)
             .GreaterThanOrEqualTo(0);
 
-        RuleFor(deliveryOrder => deliveryOrder.RiderID)
+        RuleFor(deliveryOrder => deliveryOrder.RiderId)
             .GreaterThanOrEqualTo(0);
 
         RuleFor(deliveryOrder => deliveryOrder.PickupTime)

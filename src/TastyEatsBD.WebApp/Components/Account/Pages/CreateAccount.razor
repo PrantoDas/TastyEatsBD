@@ -164,7 +164,7 @@
 
         await IdentityManagementService.CreateIdentityProfileAsync(new AppIdentityUser()
         {
-            AccountID = accountID,
+            AccountId = accountID,
             Email = AccountModel.Email,
         }, AccountModel.Password, Enum.GetName<AccountType>(AccountModel.AccountType), "/");
     }

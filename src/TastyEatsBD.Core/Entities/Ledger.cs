@@ -1,13 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TastyEatsBD.Core.Entities;
 
 public class Ledger : EntityBase
 {
-    [Required(ErrorMessage = "Account ID is required")]
-    [Display(Name = "Account ID")]
-    public int AccountID { get; set; }
+    [Required(ErrorMessage = "Account Id is required")]
+    [Display(Name = "Account Id")]
+    public int AccountId { get; set; }
+
+    [DeleteBehavior(DeleteBehavior.NoAction)]
+    public virtual Account? Account { get; set; }
 
     [Required(ErrorMessage = "Amount is required")]
     [DataType(DataType.Currency)]
@@ -19,9 +23,9 @@ public class Ledger : EntityBase
     [Display(Name = "Transaction Type")]
     public string TransactionType { get; set; }
 
-    [StringLength(50, ErrorMessage = "Reference ID must be less than {1} characters")]
-    [Display(Name = "Reference ID")]
-    public string ReferenceID { get; set; }
+    [StringLength(50, ErrorMessage = "Reference Id must be less than {1} characters")]
+    [Display(Name = "Reference Id")]
+    public string ReferenceId { get; set; }
 
     [StringLength(100, ErrorMessage = "Description must be less than {1} characters")]
     [Display(Name = "Description")]

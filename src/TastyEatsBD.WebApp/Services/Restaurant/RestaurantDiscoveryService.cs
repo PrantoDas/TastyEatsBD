@@ -22,8 +22,8 @@ public partial class RestaurantDiscoveryService : IRestaurantDiscoveryService
         // Query to get available restaurants
         var availableRestaurants = db.Restaurants
             .Join(db.Accounts,
-                  restaurant => restaurant.AccountID,
-                  account => account.ID,
+                  restaurant => restaurant.AccountId,
+                  account => account.Id,
                   (restaurant, account) => new { Restaurant = restaurant, Account = account })
             .Where(x => x.Restaurant.IsAvailable);
 
@@ -33,13 +33,13 @@ public partial class RestaurantDiscoveryService : IRestaurantDiscoveryService
 
         var result = await availableItems
             .Join(availableRestaurants,
-                  item => item.RestaurantID,
-                  info => info.Restaurant.ID,
+                  item => item.RestaurantId,
+                  info => info.Restaurant.Id,
                   (item, info) => new { Item = item, Restaurant = info.Restaurant, Account = info.Account })
             .Where(x => 
                 x.Item.Name.Contains(searchKey) 
                 || x.Restaurant.RestaurantName.Contains(searchKey))
-            .GroupBy(x => x.Restaurant.ID)
+            .GroupBy(x => x.Restaurant.Id)
             .OrderByDescending(info => info.First().Account.Rating)
             .Take(count)
             .Select(group => new RestaurantInfo
@@ -63,15 +63,15 @@ public partial class RestaurantDiscoveryService : IRestaurantDiscoveryService
         // Query to get available restaurants
         var restaurantInfo = await db.Restaurants
             .Join(db.Accounts,
-                  restaurant => restaurant.AccountID,
-                  account => account.ID,
+                  restaurant => restaurant.AccountId,
+                  account => account.Id,
                   (restaurant, account) => new RestaurantInfo { Restaurant = restaurant, Account = account })
-            .Where(x => x.Restaurant.IsAvailable && x.Restaurant.ID == restaurantID)
+            .Where(x => x.Restaurant.IsAvailable && x.Restaurant.Id == restaurantID)
             .FirstOrDefaultAsync();
 
         // Combine the queries, include accounts, and order by account rating
         restaurantInfo.Items = await db.Items
-            .Where(item => item.IsAvailable && item.RestaurantID == restaurantID)
+            .Where(item => item.IsAvailable && item.RestaurantId == restaurantID)
             .ToListAsync();
 
         return restaurantInfo;

@@ -1,17 +1,24 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace TastyEatsBD.Core.Entities;
 
 public class ItemOrder : EntityBase
 {
-    [Required(ErrorMessage = "Order ID is required")]
-    [Display(Name = "Order ID")]
-    public int OrderID { get; set; }
+    [Required(ErrorMessage = "Order Id is required")]
+    [Display(Name = "Order Id")]
+    public int OrderId { get; set; }
 
-    [Required(ErrorMessage = "Item ID is required")]
-    [Display(Name = "Item ID")]
-    public int ItemID { get; set; }
+    [DeleteBehavior(DeleteBehavior.NoAction)]
+    public virtual Order? Order { get; set; }
+
+    [Required(ErrorMessage = "Item Id is required")]
+    [Display(Name = "Item Id")]
+    public int ItemId { get; set; }
+
+    [DeleteBehavior(DeleteBehavior.NoAction)]
+    public virtual Item? Item { get; set; }
 
     [Required(ErrorMessage = "Quantity is required")]
     [Range(1, int.MaxValue, ErrorMessage = "Minimum Quantity should be {1}")]
@@ -23,5 +30,5 @@ public class ItemOrder : EntityBase
     [DataType(DataType.Currency)]
     [Column(TypeName = "decimal(18, 2)")]
     [Display(Name = "Total Price")]
-    public decimal TotalPrice { get; set; }
+    public double TotalPrice { get; set; }
 }

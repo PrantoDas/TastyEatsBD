@@ -1,18 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using TastyEatsBD.Core.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace TastyEatsBD.Core.Entities;
 
 public class Order : EntityBase
 {
-    [Required(ErrorMessage = "Customer ID is required")]
-    [Display(Name = "Customer ID")]
-    public int CustomerID { get; set; }
+    [Required(ErrorMessage = "Customer Id is required")]
+    [Display(Name = "Customer Id")]
+    public int CustomerId { get; set; }
 
-    [Required(ErrorMessage = "Delivery Location ID is required")]
-    [Display(Name = "Delivery Location ID")]
-    public int DeliveryLocationID { get; set; }
+    [DeleteBehavior(DeleteBehavior.NoAction)]
+    public virtual Customer? Customer { get; set; }
+
+    [Required(ErrorMessage = "Delivery Location Id is required")]
+    [Display(Name = "Delivery Location Id")]
+    public int LocationId { get; set; }
+
+    [DeleteBehavior(DeleteBehavior.NoAction)]
+    public virtual Location? Location { get; set; }
 
     [Required(ErrorMessage = "Total price is required")]
     [Column(TypeName = "decimal(10, 4)")]
@@ -41,4 +48,8 @@ public class Order : EntityBase
     [Column(TypeName = "decimal(2, 1)")]
     [Display(Name = "Rating")]
     public decimal? Rating { get; set; }
+
+    public virtual ICollection<ItemOrder>? OrderedItems { get; }
+
+    public virtual DeliveryOrder? DeliveryOrder { get; set; }
 }
