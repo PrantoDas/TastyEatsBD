@@ -9,17 +9,31 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{96E948C2-9ED8-44D3-9562-8B393DDA3332}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TastyEatsBD.AppHost", "src\TastyEatsBD.AppHost\TastyEatsBD.AppHost.csproj", "{EEB0866A-6063-4313-AAC3-400CD1484A93}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TastyEatsBD.Core", "src\TastyEatsBD.Core\TastyEatsBD.Core.csproj", "{8FA1993F-68CB-47CA-9291-08386F1AABD1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TastyEatsBD.ServiceDefaults", "src\TastyEatsBD.ServiceDefaults\TastyEatsBD.ServiceDefaults.csproj", "{0EED6A30-E0C2-4CF8-AA52-519B033BDCFE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TastyEatsBD.Infrastructure", "src\TastyEatsBD.Infrastructure\TastyEatsBD.Infrastructure.csproj", "{9569D155-72D4-48F7-AF57-F2547DD4DB33}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TastyEatsBD.WebApp", "src\TastyEatsBD.WebApp\TastyEatsBD.WebApp.csproj", "{07A09A7D-9425-4C47-9EDC-CF7B1A47FBCE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{C60EA505-9E5A-4873-BA42-F4A1A93A0830}"
+	ProjectSection(SolutionItems) = preProject
+		Diagrams\.$Workflow-FDS.drawio.bkp = Diagrams\.$Workflow-FDS.drawio.bkp
+		Diagrams\Entity Relation.png = Diagrams\Entity Relation.png
+		Diagrams\Entity Relation.svg = Diagrams\Entity Relation.svg
+		Diagrams\Workflow-FDS-Entity Relation.pdf = Diagrams\Workflow-FDS-Entity Relation.pdf
+		Diagrams\Workflow-FDS-Flowchart.pdf = Diagrams\Workflow-FDS-Flowchart.pdf
+		Diagrams\Workflow-FDS-Workflow.svg = Diagrams\Workflow-FDS-Workflow.svg
+		Diagrams\Workflow-FDS.drawio = Diagrams\Workflow-FDS.drawio
+		Diagrams\Workflow-Flowchart.png = Diagrams\Workflow-Flowchart.png
+		Diagrams\Workflow.svg = Diagrams\Workflow.svg
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TastyEatsBD.AppHost", "src\TastyEatsBD.AppHost\TastyEatsBD.AppHost.csproj", "{0D98B249-A3B8-4B17-893D-B26A31B196AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TastyEatsBD.ServiceDefaults", "src\TastyEatsBD.ServiceDefaults\TastyEatsBD.ServiceDefaults.csproj", "{2F0466D7-5AD4-4030-9E57-B0B3E2AAA7D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,18 +41,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EEB0866A-6063-4313-AAC3-400CD1484A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEB0866A-6063-4313-AAC3-400CD1484A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEB0866A-6063-4313-AAC3-400CD1484A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEB0866A-6063-4313-AAC3-400CD1484A93}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8FA1993F-68CB-47CA-9291-08386F1AABD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8FA1993F-68CB-47CA-9291-08386F1AABD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FA1993F-68CB-47CA-9291-08386F1AABD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FA1993F-68CB-47CA-9291-08386F1AABD1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0EED6A30-E0C2-4CF8-AA52-519B033BDCFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0EED6A30-E0C2-4CF8-AA52-519B033BDCFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0EED6A30-E0C2-4CF8-AA52-519B033BDCFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0EED6A30-E0C2-4CF8-AA52-519B033BDCFE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9569D155-72D4-48F7-AF57-F2547DD4DB33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9569D155-72D4-48F7-AF57-F2547DD4DB33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9569D155-72D4-48F7-AF57-F2547DD4DB33}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,16 +53,25 @@ Global
 		{07A09A7D-9425-4C47-9EDC-CF7B1A47FBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07A09A7D-9425-4C47-9EDC-CF7B1A47FBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07A09A7D-9425-4C47-9EDC-CF7B1A47FBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D98B249-A3B8-4B17-893D-B26A31B196AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D98B249-A3B8-4B17-893D-B26A31B196AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D98B249-A3B8-4B17-893D-B26A31B196AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D98B249-A3B8-4B17-893D-B26A31B196AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F0466D7-5AD4-4030-9E57-B0B3E2AAA7D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F0466D7-5AD4-4030-9E57-B0B3E2AAA7D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F0466D7-5AD4-4030-9E57-B0B3E2AAA7D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F0466D7-5AD4-4030-9E57-B0B3E2AAA7D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{EEB0866A-6063-4313-AAC3-400CD1484A93} = {C79CD784-55BD-453D-9AB3-3E0F5D987F56}
 		{8FA1993F-68CB-47CA-9291-08386F1AABD1} = {C79CD784-55BD-453D-9AB3-3E0F5D987F56}
-		{0EED6A30-E0C2-4CF8-AA52-519B033BDCFE} = {C79CD784-55BD-453D-9AB3-3E0F5D987F56}
 		{9569D155-72D4-48F7-AF57-F2547DD4DB33} = {C79CD784-55BD-453D-9AB3-3E0F5D987F56}
 		{07A09A7D-9425-4C47-9EDC-CF7B1A47FBCE} = {C79CD784-55BD-453D-9AB3-3E0F5D987F56}
+		{C60EA505-9E5A-4873-BA42-F4A1A93A0830} = {96E948C2-9ED8-44D3-9562-8B393DDA3332}
+		{0D98B249-A3B8-4B17-893D-B26A31B196AB} = {C79CD784-55BD-453D-9AB3-3E0F5D987F56}
+		{2F0466D7-5AD4-4030-9E57-B0B3E2AAA7D9} = {C79CD784-55BD-453D-9AB3-3E0F5D987F56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21F10E12-1C0F-4FE1-89EE-E62A30D773E2}

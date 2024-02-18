@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.FluentUI.AspNetCore.Components;
 using TastyEatsBD.Core.Entities;
 using TastyEatsBD.Infrastructure.Data;
-using TastyEatsBD.ServiceDefaults;
 using TastyEatsBD.WebApp.Components;
 using TastyEatsBD.WebApp.Services.Identity;
 
