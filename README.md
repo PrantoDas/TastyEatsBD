@@ -3,7 +3,7 @@
 1. .Net 8
 2. Blazor Server
 3. EF Core 8
-4. MSQL Server
+4. MSSQL Server
 5. ASP.NET Identity Framework with Blazor Identity Framework UI
 6. Blazor Fluent UI
 
