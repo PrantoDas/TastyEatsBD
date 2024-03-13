@@ -20,7 +20,7 @@
                   Value="@SearchText"
                   Style="margin-bottom:20px;" />
 
-    <FluentGrid Style="height:calc(78dvh - 30px);overflow-y:scroll;overflow-x: clip;">
+    <FluentGrid Style="width:100%; height:calc(78dvh - 30px);overflow-y:scroll;overflow-x: clip;">
 
         @if (Restaurants == null)
         {
@@ -39,7 +39,7 @@
                                 <ImageLoader PhotoURL="@restaurant.Account.ProfileImageURL" Style="width:100%;" />
                             </div>
                             <FluentStack Orientation="Orientation.Vertical" Style="padding:15px;">
-                                <FluentGrid Justify="JustifyContent.SpaceBetween">
+                                <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
                                     <FluentGridItem>
                                         <FluentLabel Typo="Typography.H4">@restaurant.Restaurant.RestaurantName</FluentLabel>
                                     </FluentGridItem>

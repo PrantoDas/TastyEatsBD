@@ -26,7 +26,7 @@
     <EditForm Model="@AccountModel" FormName="createAccount" method="post" OnValidSubmit="CreateUserAccount" OnInvalidSubmit="CreateUserAccount">
         <DataAnnotationsValidator />
         <FluentStack Orientation="Orientation.Vertical" VerticalGap="25" >
-            <FluentGrid Justify="JustifyContent.SpaceBetween">
+            <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
                 <FluentGridItem >
                     <FluentLabel Typo="Typography.H6">Account Type </FluentLabel>
                 </FluentGridItem>
@@ -40,7 +40,7 @@
                 </FluentGridItem>
             </FluentGrid>
 
-            <FluentGrid Justify="JustifyContent.SpaceBetween">
+            <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
                 <FluentGridItem>
                     <FluentLabel Typo="Typography.H6">Name </FluentLabel>
                 </FluentGridItem>
@@ -52,7 +52,7 @@
                 </FluentGridItem>
             </FluentGrid>
 
-            <FluentGrid Justify="JustifyContent.SpaceBetween">
+            <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
                 <FluentGridItem>
                     <FluentLabel Typo="Typography.H6">Email </FluentLabel>
                 </FluentGridItem>
@@ -65,7 +65,7 @@
                 </FluentGridItem>
             </FluentGrid>
 
-            <FluentGrid Justify="JustifyContent.SpaceBetween">
+            <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
                 <FluentGridItem>
                     <FluentLabel Typo="Typography.H6">Password </FluentLabel>
                 </FluentGridItem>
@@ -78,7 +78,7 @@
                 </FluentGridItem>
             </FluentGrid>
 
-            <FluentGrid  Justify="JustifyContent.SpaceBetween">
+            <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
                 <FluentGridItem>
                     <FluentLabel Typo="Typography.H6">Confirm Password </FluentLabel>
                 </FluentGridItem>
@@ -91,7 +91,7 @@
                 </FluentGridItem>
             </FluentGrid>
 
-            <FluentGrid Justify="JustifyContent.SpaceBetween">
+            <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
                 <FluentGridItem>
                     <FluentLabel Typo="Typography.H6">Profile Photo </FluentLabel>
                 </FluentGridItem>
@@ -125,7 +125,7 @@
                 <InputLocation Location="@AccountModel.Location"/>
             }
 
-            <FluentGrid>
+            <FluentGrid Style="width:100%">
                  <FluentButton Appearance="Appearance.Accent" Type="ButtonType.Submit" Style="width:100%">Create</FluentButton>
                  @* <FluentButton Appearance="Appearance.Accent" Type="ButtonType.Button" Style="width:100%" OnClick="GenerateTestAccounts">Generate Test Accounts</FluentButton> *@
             </FluentGrid>

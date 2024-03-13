@@ -5,18 +5,18 @@
 
 @inject IJSRuntime JSRuntime
 
-<FluentGrid Justify="JustifyContent.SpaceBetween" Style="outline:double; outline-color:burlywood; margin-top:5px; margin-bottom:5px">
+<FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%; outline:double; outline-color:burlywood; margin-top:5px; margin-bottom:5px">
     <FluentStack Orientation="Orientation.Vertical" VerticalGap="30" Style="padding:30px">
         <FluentLabel Typo="Typography.H4">Geographic Location</FluentLabel>
 
-        <FluentGrid Justify="JustifyContent.SpaceBetween">
+        <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
             <FluentLabel Typo="Typography.H6">Latitude</FluentLabel>
             <FluentSpacer />
             <FluentNumberField Name="Latitude" @bind-Value="@Location.Latitude" Step="0.000001" />
             <FluentValidationMessage For="@(() => Location.Latitude)" />
         </FluentGrid>
 
-        <FluentGrid Justify="JustifyContent.SpaceBetween">
+        <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
             <FluentLabel Typo="Typography.H6">Longitude</FluentLabel>
             <FluentSpacer />
             <FluentNumberField Name="Longitude" @bind-Value="@Location.Longitude" Step="0.0000001" />
@@ -27,7 +27,7 @@
     </FluentStack>
 </FluentGrid>
 
-<FluentGrid Justify="JustifyContent.SpaceBetween">
+<FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
     <FluentGridItem>
         <FluentLabel Typo="Typography.H6">Street Address</FluentLabel>
     </FluentGridItem>
@@ -37,7 +37,7 @@
     </FluentGridItem>
 </FluentGrid>
 
-<FluentGrid Justify="JustifyContent.SpaceBetween">
+<FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
     <FluentGridItem>
         <FluentLabel Typo="Typography.H6">Area</FluentLabel>
     </FluentGridItem>
@@ -47,7 +47,7 @@
     </FluentGridItem>
 </FluentGrid>
 
-<FluentGrid Justify="JustifyContent.SpaceBetween">
+<FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
     <FluentGridItem>
         <FluentLabel Typo="Typography.H6">City</FluentLabel>
     </FluentGridItem>
@@ -57,7 +57,7 @@
     </FluentGridItem>
 </FluentGrid>
 
-<FluentGrid Justify="JustifyContent.SpaceBetween">
+<FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
     <FluentGridItem>
         <FluentLabel Typo="Typography.H6">Zip Code</FluentLabel>
     </FluentGridItem>
