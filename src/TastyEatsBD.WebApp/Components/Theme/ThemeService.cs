@@ -30,6 +30,11 @@ internal class ThemeService
 
     public async Task SetUserThemeAsync()
     {
+        if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated == false)
+        {
+            return;
+        }
+
         var user = await _identityUserAccessor.GetRequiredUserAsync(_httpContextAccessor.HttpContext);
 
         using var dbContext = await _dbContextFactory.CreateDbContextAsync();
