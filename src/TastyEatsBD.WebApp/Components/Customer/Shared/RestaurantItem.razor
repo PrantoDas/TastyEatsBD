@@ -1,7 +1,7 @@
 ﻿@using TastyEatsBD.Core.Entities;
 
 <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
-    <FluentGridItem sm="9">
+    <FluentGridItem xs="8" sm="9">
         <FluentStack Orientation="Orientation.Vertical">
             <FluentLabel Typo="Typography.Subject" Weight="FontWeight.Bold">
                 @Item.Name
@@ -9,17 +9,34 @@
             <FluentLabel Typo="Typography.Body">
                 @Item.Description
             </FluentLabel>
-            <FluentLabel>
-                <FluentIcon Value="@(new Icons.Regular.Size20.Money())" /> @Item.Price
+            <FluentLabel Style="font-weight:bold;">
+                <FluentIcon Value="@(new Icons.Regular.Size20.Money())" /> @Item.Price.ToString("C")
             </FluentLabel>
         </FluentStack>
     </FluentGridItem>
-    <FluentGridItem sm="3" Justify="JustifyContent.FlexEnd">
-        <ImageLoader PhotoURL="@Item.PhotoURL" Style="height:50px;border-radius:10px" />
+    <FluentGridItem xs="4" sm="3" Style="flex-direction:column; align-items:flex-end" Justify="JustifyContent.SpaceBetween" Gap=".5rem">
+        <ImageLoader PhotoURL="@Item.PhotoURL" Style="height:50px; width: auto; border-radius:10px;" />
+        
+        @if (CanAddToCart == true)
+        {
+            <FluentButton IconStart="@(new Icons.Filled.Size20.Add())"
+                          OnClick="@(() => AddToCart())">
+                Add
+            </FluentButton>
+        }
+        
     </FluentGridItem>
 </FluentGrid>
 
 @code {
     [Parameter] 
     public Item Item { get; set; }
+
+    [Parameter]
+    public bool? CanAddToCart { get; set; } = false;
+
+    private void AddToCart()
+    {
+
+    }
 }
