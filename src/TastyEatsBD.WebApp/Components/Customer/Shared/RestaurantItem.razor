@@ -16,23 +16,22 @@
     </FluentGridItem>
     <FluentGridItem xs="4" sm="3" Style="flex-direction:column; align-items:flex-end" Justify="JustifyContent.SpaceBetween" Gap=".5rem">
         <ImageLoader PhotoURL="@Item.PhotoURL" Style="height:50px; width: auto; border-radius:10px;" />
-        
+
         @if (CanAddToCart == true)
         {
-            <FluentButton 
-                Appearance="Appearance.Lightweight"
-                IconStart="@(new Icons.Regular.Size20.Cart())"
-                OnClick="@(() => AddToCart())"
-                Style="border: 1px solid #CCCCCC; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <FluentButton Appearance="Appearance.Lightweight"
+                          IconStart="@(new Icons.Regular.Size20.Cart())"
+                          OnClick="@(() => AddToCart())"
+                          Style="border: 1px solid #CCCCCC; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
                 Add
             </FluentButton>
         }
-        
+
     </FluentGridItem>
 </FluentGrid>
 
 @code {
-    [Parameter] 
+    [Parameter]
     public Item Item { get; set; }
 
     [Parameter]
