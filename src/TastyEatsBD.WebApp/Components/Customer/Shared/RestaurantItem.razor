@@ -19,8 +19,11 @@
         
         @if (CanAddToCart == true)
         {
-            <FluentButton IconStart="@(new Icons.Filled.Size20.Add())"
-                          OnClick="@(() => AddToCart())">
+            <FluentButton 
+                Appearance="Appearance.Lightweight"
+                IconStart="@(new Icons.Regular.Size20.Cart())"
+                OnClick="@(() => AddToCart())"
+                Style="border: 1px solid #CCCCCC; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
                 Add
             </FluentButton>
         }
