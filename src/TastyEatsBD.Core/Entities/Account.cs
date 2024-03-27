@@ -39,6 +39,8 @@ public class Account : EntityBase
 
     public virtual Customer? Customer { get; set; }
 
+    public virtual Cart? Cart { get; set; }
+
     public virtual Restaurant? Restaurant { get; set; }
 
     public virtual Rider? Rider { get; set; }

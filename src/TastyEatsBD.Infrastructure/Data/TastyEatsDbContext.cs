@@ -35,5 +35,7 @@ public class TastyEatsDbContext : DbContext
         modelBuilder.ApplyConfiguration(new LedgerConfiguration());
         modelBuilder.ApplyConfiguration(new LocationConfiguration());
         modelBuilder.ApplyConfiguration(new AccountSettingConfiguration());
+        modelBuilder.ApplyConfiguration(new CartConfiguration());
+        modelBuilder.ApplyConfiguration(new CartItemConfiguration());
     }
 }
