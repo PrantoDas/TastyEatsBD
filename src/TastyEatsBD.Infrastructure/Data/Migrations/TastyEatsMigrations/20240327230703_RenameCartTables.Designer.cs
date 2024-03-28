@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TastyEatsBD.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using TastyEatsBD.Infrastructure.Data;
 namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
 {
     [DbContext(typeof(TastyEatsDbContext))]
-    partial class TastyEatsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240327230703_RenameCartTables")]
+    partial class RenameCartTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

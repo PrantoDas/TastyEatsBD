@@ -17,6 +17,8 @@ public class TastyEatsDbContext : DbContext
     public DbSet<Item> Items { get; set; }
     public DbSet<Ledger> Ledgers { get; set; }
     public DbSet<AccountSetting> AccountSettings { get; set; }
+    public DbSet<Cart> Carts { get; set; }
+    public DbSet<CartItem> CartItems { get; set; }
 
     public TastyEatsDbContext(DbContextOptions<TastyEatsDbContext> options) : base(options) {}
 

@@ -10,7 +10,11 @@
             </FluentGridItem>
 
             <FluentGridItem Style="margin-top:20px;">
-                <CartViewer />
+                <AuthorizeView>
+                    <Authorized>
+                        <CartViewer />
+                    </Authorized>
+                </AuthorizeView>
             </FluentGridItem>
         </FluentGrid>
     </FluentHeader>

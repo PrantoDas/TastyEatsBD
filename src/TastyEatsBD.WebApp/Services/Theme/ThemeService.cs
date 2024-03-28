@@ -4,7 +4,7 @@ using Microsoft.FluentUI.AspNetCore.Components.DesignTokens;
 using TastyEatsBD.Infrastructure.Data;
 using TastyEatsBD.WebApp.Services.Identity;
 
-namespace TastyEatsBD.WebApp.Components.Theme;
+namespace TastyEatsBD.WebApp.Services.Theme;
 
 internal class ThemeService
 {

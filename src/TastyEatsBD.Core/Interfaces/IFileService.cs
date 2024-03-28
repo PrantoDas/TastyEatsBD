@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TastyEatsBD.Core.Interfaces;
+﻿namespace TastyEatsBD.Core.Interfaces;
 public interface IFileService
 {
     /// <summary>
@@ -37,4 +31,3 @@ public interface IFileService
     Task<bool> FileExistsAsync(string filePath);
     Task<byte[]> GetFileAsync(string filePath);
 }
-

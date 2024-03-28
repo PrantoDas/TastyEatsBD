@@ -1,9 +1,49 @@
-﻿<FluentCounterBadge Count="55"
-                    Appearance="Appearance.Lightweight"
-                    BottomPosition="60"
-                    HorizontalPosition="40" 
-                    Style="font-size:small; min-width: 13px;">
-    <FluentIcon Value="@(new Icons.Regular.Size24.Cart())"
-                Color="@Color.Fill"
-                Width="32px" />
-</FluentCounterBadge>
+﻿@using TastyEatsBD.Core.Entities
+@using TastyEatsBD.Core.Interfaces
+@using TastyEatsBD.WebApp.Services.Cart
+
+@inject ICartService CartService
+@rendermode InteractiveServer
+
+
+@if (Cart != null && Cart?.CartItems.Count > 0)
+{
+    <FluentCounterBadge Count="Cart?.CartItems.Sum(i => i.Quantity)"
+                        Appearance="Appearance.Lightweight"
+                        BottomPosition="60"
+                        HorizontalPosition="40" 
+                        Style="font-size:small; min-width: 13px;">
+        <FluentIcon Value="@(new Icons.Regular.Size24.Cart())"
+                    Color="@Color.Fill"
+                    Width="32px" />
+    </FluentCounterBadge>
+}
+
+@code
+{
+    [CascadingParameter]
+    private CartState CartState { get; set; }
+
+    private Cart Cart { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshCartAsync();
+    }
+
+    protected override void OnInitialized()
+    {
+        CartState.OnChangeAsync += async () => await RefreshCartAsync();
+    }
+
+    public void Dispose()
+    {
+        CartState.OnChangeAsync -= async () => await RefreshCartAsync();
+    }
+
+    private async Task RefreshCartAsync()
+    {
+        Cart = await CartService.GetCartInfoAsync();
+        StateHasChanged();
+    }
+}

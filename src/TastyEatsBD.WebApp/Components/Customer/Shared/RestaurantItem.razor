@@ -1,4 +1,8 @@
 ﻿@using TastyEatsBD.Core.Entities;
+@using TastyEatsBD.Core.Interfaces
+@using TastyEatsBD.WebApp.Services.Cart
+
+@inject ICartService CartService
 
 <FluentGrid Justify="JustifyContent.SpaceBetween" Style="width:100%">
     <FluentGridItem xs="8" sm="9">
@@ -21,7 +25,7 @@
         {
             <FluentButton Appearance="Appearance.Lightweight"
                           IconStart="@(new Icons.Regular.Size20.Cart())"
-                          OnClick="@(() => AddToCart())"
+                          OnClick="@(() => AddToCartAsync())"
                           Style="border: 1px solid #CCCCCC; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
                 Add
             </FluentButton>
@@ -31,14 +35,20 @@
 </FluentGrid>
 
 @code {
+    [CascadingParameter]
+    private CartState CartState { get; set; }
+
     [Parameter]
     public Item Item { get; set; }
 
     [Parameter]
     public bool? CanAddToCart { get; set; } = false;
 
-    private void AddToCart()
-    {
+    private int CartId { get; set; } = 0;
 
+    private async void AddToCartAsync()
+    {
+        CartId = await CartService.AddToCartAsync(Item.Id, CartId);
+        await CartState.NotifyChangesAsync();
     }
 }

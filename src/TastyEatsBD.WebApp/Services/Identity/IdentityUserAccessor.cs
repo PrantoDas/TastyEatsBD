@@ -3,7 +3,10 @@ using TastyEatsBD.Core.Entities;
 
 namespace TastyEatsBD.WebApp.Services.Identity
 {
-    internal sealed class IdentityUserAccessor(UserManager<AppIdentityUser> userManager, IdentityRedirectManager redirectManager)
+    internal sealed class IdentityUserAccessor(
+        UserManager<AppIdentityUser> userManager,
+        IdentityRedirectManager redirectManager,
+        IHttpContextAccessor httpContextAccessor)
     {
         public async Task<AppIdentityUser> GetRequiredUserAsync(HttpContext context)
         {
@@ -13,6 +16,11 @@ namespace TastyEatsBD.WebApp.Services.Identity
                 redirectManager.RedirectToWithStatus("Account/Login", $"Error: Unable to load user with ID '{userManager.GetUserId(context.User)}'.", context);
             }
             return user;
+        }
+
+        public Task<AppIdentityUser> GetCurrentUserAsync()
+        {
+            return GetRequiredUserAsync(httpContextAccessor.HttpContext);
         }
     }
 }
