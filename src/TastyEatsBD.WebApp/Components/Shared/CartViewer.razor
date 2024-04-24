@@ -15,7 +15,8 @@
                         Style="font-size:small; min-width: 13px;">
         <FluentIcon Value="@(new Icons.Regular.Size24.Cart())"
                     Color="@Color.Fill"
-                    Width="32px" />
+                    Width="32px" 
+                    OnClick="() => OpenCart()"/>
     </FluentCounterBadge>
 }
 
@@ -45,5 +46,14 @@
     {
         Cart = await CartService.GetCartInfoAsync();
         StateHasChanged();
+    }
+
+    private void OpenCart()
+    {
+        /// We will open a panel on clicking cart to show cart items.
+        /// There will be a order button on that panel and the user can also change the item quantity from here.
+        /// Clicking order will redirect user to the order tracking page.
+        /// Order tracking page will show stepper for order status and corresponding messages.
+        /// 
     }
 }

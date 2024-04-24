@@ -18,6 +18,7 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddMemoryCache();
         services.AddProblemDetails();
         services.AddRazorComponents()
             .AddInteractiveServerComponents();
