@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 
 namespace TastyEatsBD.Core.Entities;
 
@@ -16,6 +17,12 @@ public class Cart : EntityBase
 
     [DeleteBehavior(DeleteBehavior.NoAction)]
     public virtual Account? Account { get; set; }
+
+    [Display(Name = "Restaurant Id")]
+    public int RestaurantId { get; set; } = 0;
+
+    [DeleteBehavior(DeleteBehavior.NoAction)]
+    public virtual Restaurant? Restaurant { get; set; }
 
     public virtual ICollection<CartItem>? CartItems { get; }
 }

@@ -32,7 +32,7 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.AppIdentityMigrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AccountID = table.Column<int>(type: "int", nullable: false),
+                    AccountId = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -164,11 +164,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.AppIdentityMigrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "46e425ed-ac09-4dfa-a5e5-f174d86b5c0e", "0fc1dd81-34a3-4ca0-8513-2051e35c1c8b", "Customer", "CUSTOMER" },
-                    { "7fafe134-9230-413e-a2a8-31fcf3ec10b2", "f4e2f341-7362-450f-9b3e-e0dc708f94ee", "Rider", "RIDER" },
-                    { "81f6be8e-5c55-4539-8302-f854b5fba63d", "56a83605-9fb9-4f85-b779-9825839bcd2f", "Restaurant", "RESTAURANT" },
-                    { "b3ebd148-574e-475f-ab3c-a45d678f4a71", "2402c073-c1ab-4cdc-9278-3046c5d52887", "CustomerCare", "CUSTOMERCARE" },
-                    { "c2c977bc-be70-491f-b14f-c5c99a0cc48f", "c45c3047-52ec-4343-92c4-e27f14d56042", "Administrator", "ADMINISTRATOR" }
+                    { "1d6026ce-0dac-13ea-8b72-95f02b7620a7", "4f9cffcc-cb87-810e-3d8b-408218278dfc", "Customer", "CUSTOMER" },
+                    { "51c27b7b-e12e-dcfe-d76b-dc68926d4f7b", "acc8496e-185d-0584-8b13-893e2c8a7e28", "Administrator", "ADMINISTRATOR" },
+                    { "8c6feda6-0726-a697-4855-6c11eb21c68f", "86c7fc05-2966-dd86-c12f-64de19acc065", "CustomerCare", "CUSTOMERCARE" },
+                    { "cca997e1-0bf4-6f77-3136-8105d1aa8c4b", "9a156473-d46b-525b-363e-25873cf60da1", "Restaurant", "RESTAURANT" },
+                    { "cd6e1195-c884-e4e4-3c29-629b68775bbd", "c6e3766c-8462-2ba8-0902-fb935c013c6e", "Rider", "RIDER" }
                 });
 
             migrationBuilder.CreateIndex(

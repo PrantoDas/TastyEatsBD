@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TastyEatsBD.Core.Entities;
 
@@ -10,6 +11,23 @@ public class RiderConfiguration : IEntityTypeConfiguration<Rider>
     {
         // AccountID - Foreign Key to Account
         builder.HasIndex(r => r.AccountId).HasDatabaseName("IDX_Rider_AccountID");
+
+        builder.Property(r => r.CreatedOn)
+               .HasDefaultValueSql("GETDATE()")
+               .ValueGeneratedOnAdd();
+
+        builder.Property(r => r.ModifiedOn)
+               .HasDefaultValueSql("GETDATE()")
+               .ValueGeneratedOnAddOrUpdate();
+
+        builder.Property(r => r.IsAvailable)
+               .HasDefaultValue(true)
+               .ValueGeneratedOnAddOrUpdate();
+
+        // Ensuring these are not included as literals in migrations
+        builder.Property(r => r.CreatedOn).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        builder.Property(r => r.ModifiedOn).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        builder.Property(r => r.IsAvailable).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
 
         builder.HasData(GetRiderSeedData());
     }

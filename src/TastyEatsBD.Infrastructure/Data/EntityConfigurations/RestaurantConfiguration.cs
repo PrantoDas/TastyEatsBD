@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TastyEatsBD.Core.Entities;
 
@@ -16,6 +17,23 @@ public class RestaurantConfiguration : IEntityTypeConfiguration<Restaurant>
 
         // RestaurantName - Need to make it full text searchable later on using a migration script
         // builder.HasIndex(r => r.RestaurantName).HasDatabaseName("IDX_Restaurant_RestaurantName");
+
+        builder.Property(r => r.CreatedOn)
+               .HasDefaultValueSql("GETDATE()")
+               .ValueGeneratedOnAdd();
+
+        builder.Property(r => r.ModifiedOn)
+               .HasDefaultValueSql("GETDATE()")
+               .ValueGeneratedOnAddOrUpdate();
+
+        builder.Property(r => r.IsAvailable)
+               .HasDefaultValue(true)
+               .ValueGeneratedOnAddOrUpdate();
+
+        // Ensuring these are not included as literals in migrations
+        builder.Property(r => r.CreatedOn).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        builder.Property(r => r.ModifiedOn).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        builder.Property(r => r.IsAvailable).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
 
         builder.HasData(GetResturantSeedData());
     }

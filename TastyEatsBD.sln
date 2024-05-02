@@ -31,9 +31,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{C6
 		Diagrams\Workflow.svg = Diagrams\Workflow.svg
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TastyEatsBD.AppHost", "src\TastyEatsBD.AppHost\TastyEatsBD.AppHost.csproj", "{0D98B249-A3B8-4B17-893D-B26A31B196AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TastyEatsBD.AppHost", "src\TastyEatsBD.AppHost\TastyEatsBD.AppHost.csproj", "{0D98B249-A3B8-4B17-893D-B26A31B196AB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TastyEatsBD.ServiceDefaults", "src\TastyEatsBD.ServiceDefaults\TastyEatsBD.ServiceDefaults.csproj", "{2F0466D7-5AD4-4030-9E57-B0B3E2AAA7D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utlities", "Utlities", "{2DD926AD-C132-401D-8B5B-2B6D16E981D0}"
+	ProjectSection(SolutionItems) = preProject
+		AddImages.sql = AddImages.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +77,7 @@ Global
 		{C60EA505-9E5A-4873-BA42-F4A1A93A0830} = {96E948C2-9ED8-44D3-9562-8B393DDA3332}
 		{0D98B249-A3B8-4B17-893D-B26A31B196AB} = {C79CD784-55BD-453D-9AB3-3E0F5D987F56}
 		{2F0466D7-5AD4-4030-9E57-B0B3E2AAA7D9} = {C79CD784-55BD-453D-9AB3-3E0F5D987F56}
+		{2DD926AD-C132-401D-8B5B-2B6D16E981D0} = {96E948C2-9ED8-44D3-9562-8B393DDA3332}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21F10E12-1C0F-4FE1-89EE-E62A30D773E2}

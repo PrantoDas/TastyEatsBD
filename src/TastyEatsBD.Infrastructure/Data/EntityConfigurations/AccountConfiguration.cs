@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TastyEatsBD.Core.Entities;
 using TastyEatsBD.Core.Enums;
@@ -9,6 +10,18 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
 {
     public void Configure(EntityTypeBuilder<Account> builder)
     {
+        builder.Property(r => r.CreatedOn)
+               .HasDefaultValueSql("GETDATE()")
+               .ValueGeneratedOnAdd();
+
+        builder.Property(r => r.ModifiedOn)
+               .HasDefaultValueSql("GETDATE()")
+               .ValueGeneratedOnAddOrUpdate();
+
+        // Ensuring these are not included as literals in migrations
+        builder.Property(r => r.CreatedOn).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        builder.Property(r => r.ModifiedOn).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+
         builder.HasData(GetAccountSeedData());
     }
 

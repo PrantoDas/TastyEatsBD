@@ -17,7 +17,7 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.AppIdentityMigrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -51,36 +51,36 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.AppIdentityMigrations
                     b.HasData(
                         new
                         {
-                            Id = "83defad9-2b06-4215-b8fc-1396f8de6e6e",
-                            ConcurrencyStamp = "766edb49-f0a3-42d6-a144-0f5d39fa1f73",
+                            Id = "1d6026ce-0dac-13ea-8b72-95f02b7620a7",
+                            ConcurrencyStamp = "4f9cffcc-cb87-810e-3d8b-408218278dfc",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "1511e2da-f405-49b9-a33d-2a346c9c09b9",
-                            ConcurrencyStamp = "d8338eb0-9015-483b-b6de-d0f6fa11c69e",
+                            Id = "cca997e1-0bf4-6f77-3136-8105d1aa8c4b",
+                            ConcurrencyStamp = "9a156473-d46b-525b-363e-25873cf60da1",
                             Name = "Restaurant",
                             NormalizedName = "RESTAURANT"
                         },
                         new
                         {
-                            Id = "a7f6fa26-9ce7-48cc-b192-3e696a715159",
-                            ConcurrencyStamp = "3dfe982b-87ac-4496-bd31-3252ecd35d12",
+                            Id = "cd6e1195-c884-e4e4-3c29-629b68775bbd",
+                            ConcurrencyStamp = "c6e3766c-8462-2ba8-0902-fb935c013c6e",
                             Name = "Rider",
                             NormalizedName = "RIDER"
                         },
                         new
                         {
-                            Id = "74253ecf-0665-40d2-960c-c452edf16195",
-                            ConcurrencyStamp = "03b49e36-f6af-4ed2-8966-50eb79f3d053",
+                            Id = "51c27b7b-e12e-dcfe-d76b-dc68926d4f7b",
+                            ConcurrencyStamp = "acc8496e-185d-0584-8b13-893e2c8a7e28",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "8ec7aeb9-56da-4b1f-9219-701e133225ca",
-                            ConcurrencyStamp = "dc1a8203-0a0c-4fc5-a66d-7cf1d7cc91ab",
+                            Id = "8c6feda6-0726-a697-4855-6c11eb21c68f",
+                            ConcurrencyStamp = "86c7fc05-2966-dd86-c12f-64de19acc065",
                             Name = "CustomerCare",
                             NormalizedName = "CUSTOMERCARE"
                         });

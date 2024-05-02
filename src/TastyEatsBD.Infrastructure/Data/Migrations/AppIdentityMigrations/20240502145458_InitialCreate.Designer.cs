@@ -12,7 +12,7 @@ using TastyEatsBD.Infrastructure.Data;
 namespace TastyEatsBD.Infrastructure.Data.Migrations.AppIdentityMigrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20240108194454_InitialCreate")]
+    [Migration("20240502145458_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.AppIdentityMigrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -54,36 +54,36 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.AppIdentityMigrations
                     b.HasData(
                         new
                         {
-                            Id = "46e425ed-ac09-4dfa-a5e5-f174d86b5c0e",
-                            ConcurrencyStamp = "0fc1dd81-34a3-4ca0-8513-2051e35c1c8b",
+                            Id = "1d6026ce-0dac-13ea-8b72-95f02b7620a7",
+                            ConcurrencyStamp = "4f9cffcc-cb87-810e-3d8b-408218278dfc",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "81f6be8e-5c55-4539-8302-f854b5fba63d",
-                            ConcurrencyStamp = "56a83605-9fb9-4f85-b779-9825839bcd2f",
+                            Id = "cca997e1-0bf4-6f77-3136-8105d1aa8c4b",
+                            ConcurrencyStamp = "9a156473-d46b-525b-363e-25873cf60da1",
                             Name = "Restaurant",
                             NormalizedName = "RESTAURANT"
                         },
                         new
                         {
-                            Id = "7fafe134-9230-413e-a2a8-31fcf3ec10b2",
-                            ConcurrencyStamp = "f4e2f341-7362-450f-9b3e-e0dc708f94ee",
+                            Id = "cd6e1195-c884-e4e4-3c29-629b68775bbd",
+                            ConcurrencyStamp = "c6e3766c-8462-2ba8-0902-fb935c013c6e",
                             Name = "Rider",
                             NormalizedName = "RIDER"
                         },
                         new
                         {
-                            Id = "c2c977bc-be70-491f-b14f-c5c99a0cc48f",
-                            ConcurrencyStamp = "c45c3047-52ec-4343-92c4-e27f14d56042",
+                            Id = "51c27b7b-e12e-dcfe-d76b-dc68926d4f7b",
+                            ConcurrencyStamp = "acc8496e-185d-0584-8b13-893e2c8a7e28",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "b3ebd148-574e-475f-ab3c-a45d678f4a71",
-                            ConcurrencyStamp = "2402c073-c1ab-4cdc-9278-3046c5d52887",
+                            Id = "8c6feda6-0726-a697-4855-6c11eb21c68f",
+                            ConcurrencyStamp = "86c7fc05-2966-dd86-c12f-64de19acc065",
                             Name = "CustomerCare",
                             NormalizedName = "CUSTOMERCARE"
                         });
@@ -203,7 +203,7 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.AppIdentityMigrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountID")
+                    b.Property<int>("AccountId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")

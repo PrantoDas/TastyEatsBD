@@ -53,7 +53,7 @@ else
 
 @code {
     [Parameter]
-    public int RestaurantID { get; set; }
+    public int RestaurantId { get; set; }
 
     private RestaurantInfo? Restaurant { get; set; }
 
@@ -61,7 +61,7 @@ else
     {
         if (firstRender)
         {
-            Restaurant = await RestaurantDiscoveryService.GetResturantAsync(RestaurantID);
+            Restaurant = await RestaurantDiscoveryService.GetResturantAsync(RestaurantId);
             if (Restaurant == null)
             {
                 NavigationManager.NavigateTo("/");

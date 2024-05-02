@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TastyEatsBD.Core.Entities;
 
@@ -8,6 +9,18 @@ public class LocationConfiguration : IEntityTypeConfiguration<Location>
 {
     public void Configure(EntityTypeBuilder<Location> builder)
     {
+        builder.Property(r => r.CreatedOn)
+               .HasDefaultValueSql("GETDATE()")
+               .ValueGeneratedOnAdd();
+
+        builder.Property(r => r.ModifiedOn)
+               .HasDefaultValueSql("GETDATE()")
+               .ValueGeneratedOnAddOrUpdate();
+
+        // Ensuring these are not included as literals in migrations
+        builder.Property(r => r.CreatedOn).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        builder.Property(r => r.ModifiedOn).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+
         builder.HasData(GetLocationSeedData());
     }
 

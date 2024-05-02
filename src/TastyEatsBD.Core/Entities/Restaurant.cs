@@ -32,5 +32,6 @@ public class Restaurant : EntityBase
     public virtual ICollection<Item>? Items { get; }
 
     public virtual ICollection<DeliveryOrder>? DeliveryOrders { get; }
+    public virtual ICollection<Cart>? Carts { get; }
 }
 

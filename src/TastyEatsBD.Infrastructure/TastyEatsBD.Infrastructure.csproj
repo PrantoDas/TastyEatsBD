@@ -30,6 +30,8 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="Data\Migrations\AppIdentityMigrations\" />
+    <Folder Include="Data\Migrations\TastyEatsMigrations\" />
   </ItemGroup>
 
 </Project>

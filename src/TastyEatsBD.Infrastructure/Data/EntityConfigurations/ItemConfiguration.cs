@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TastyEatsBD.Core.Entities;
 
@@ -13,6 +14,24 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
 
         // ItemName - Need to make it full text searchable later on using a migration script
         //builder.HasIndex(i => i.ItemName).HasDatabaseName("IDX_Item_ItemName");
+
+        builder.Property(r => r.CreatedOn)
+               .HasDefaultValueSql("GETDATE()")
+               .ValueGeneratedOnAdd();
+
+        builder.Property(r => r.ModifiedOn)
+               .HasDefaultValueSql("GETDATE()")
+               .ValueGeneratedOnAddOrUpdate();
+
+        builder.Property(r => r.IsAvailable)
+               .HasDefaultValue(true)
+               .ValueGeneratedOnAddOrUpdate();
+
+        // Ensuring these are not included as literals in migrations
+        builder.Property(r => r.CreatedOn).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        builder.Property(r => r.ModifiedOn).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        builder.Property(r => r.IsAvailable).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+
 
         builder.HasData(GetItemSeedData());
     }

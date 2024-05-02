@@ -17,7 +17,7 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -39,7 +39,9 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -51,7 +53,9 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -75,10 +79,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 1,
                             AccountType = 3,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9835),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8619),
                             Email = "daspranto82@gmail.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9838),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8623),
                             Name = "Admin User"
                         },
                         new
@@ -86,10 +90,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 2,
                             AccountType = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9850),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8642),
                             Email = "contact@dhakadelights.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9850),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8642),
                             Name = "Dhaka Delights"
                         },
                         new
@@ -97,10 +101,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 3,
                             AccountType = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9851),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8644),
                             Email = "info@chittagongeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9851),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8644),
                             Name = "Chittagong Eats"
                         },
                         new
@@ -108,10 +112,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 4,
                             AccountType = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9852),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8645),
                             Email = "contact@sylhetspices.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9852),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8646),
                             Name = "Sylhet Spices"
                         },
                         new
@@ -119,10 +123,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 5,
                             AccountType = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9853),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8647),
                             Email = "hello@rajshahirecipes.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9853),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8647),
                             Name = "Rajshahi Recipes"
                         },
                         new
@@ -130,10 +134,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 6,
                             AccountType = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9856),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8650),
                             Email = "info@khulnakitchen.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9856),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8651),
                             Name = "Khulna Kitchen"
                         },
                         new
@@ -141,10 +145,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 7,
                             AccountType = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9857),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8652),
                             Email = "support@barisalbites.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9857),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8652),
                             Name = "Barisal Bites"
                         },
                         new
@@ -152,10 +156,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 8,
                             AccountType = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9858),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8654),
                             Email = "contact@rangpurrelish.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9859),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8654),
                             Name = "Rangpur Relish"
                         },
                         new
@@ -163,10 +167,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 9,
                             AccountType = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9859),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8655),
                             Email = "info@mymensinghmunch.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9860),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8655),
                             Name = "Mymensingh Munch"
                         },
                         new
@@ -174,10 +178,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 10,
                             AccountType = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9861),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8658),
                             Email = "hello@comillacuisine.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9862),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8658),
                             Name = "Comilla Cuisine"
                         },
                         new
@@ -185,10 +189,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 11,
                             AccountType = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9862),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8659),
                             Email = "support@gazipurgourmet.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9863),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8660),
                             Name = "Gazipur Gourmet"
                         },
                         new
@@ -196,10 +200,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 12,
                             AccountType = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9863),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8661),
                             Email = "aminul.islam@tastyeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9864),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8661),
                             Name = "Aminul Islam"
                         },
                         new
@@ -207,10 +211,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 13,
                             AccountType = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9864),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8662),
                             Email = "bishal.ray@tastyeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9865),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8663),
                             Name = "Bishal Ray"
                         },
                         new
@@ -218,10 +222,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 14,
                             AccountType = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9865),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8664),
                             Email = "chayan.das@tastyeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9866),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8664),
                             Name = "Chayan Das"
                         },
                         new
@@ -229,10 +233,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 15,
                             AccountType = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9867),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8666),
                             Email = "dipu.chandra@tastyeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9867),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8666),
                             Name = "Dipu Chandra"
                         },
                         new
@@ -240,10 +244,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 16,
                             AccountType = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9868),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8667),
                             Email = "emon.hossain@tastyeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9868),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8667),
                             Name = "Emon Hossain"
                         },
                         new
@@ -251,10 +255,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 17,
                             AccountType = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9869),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8669),
                             Email = "fahim.molla@tastyeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9869),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8669),
                             Name = "Fahim Molla"
                         },
                         new
@@ -262,10 +266,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 18,
                             AccountType = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9870),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8671),
                             Email = "gias.uddin@tastyeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9871),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8672),
                             Name = "Gias Uddin"
                         },
                         new
@@ -273,10 +277,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 19,
                             AccountType = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9872),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8673),
                             Email = "habib.rahman@tastyeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9872),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8673),
                             Name = "Habib Rahman"
                         },
                         new
@@ -284,10 +288,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 20,
                             AccountType = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9872),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8674),
                             Email = "irfan.ali@tastyeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9873),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8675),
                             Name = "Irfan Ali"
                         },
                         new
@@ -295,10 +299,10 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 21,
                             AccountType = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9874),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8676),
                             Email = "joy.barua@tastyeats.com",
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 127, DateTimeKind.Utc).AddTicks(9874),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 917, DateTimeKind.Utc).AddTicks(8676),
                             Name = "Joy Barua"
                         });
                 });
@@ -371,6 +375,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("RestaurantId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(10, 2)");
 
@@ -379,6 +388,9 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                     b.HasIndex("AccountId")
                         .IsUnique()
                         .HasDatabaseName("IDX_Cart_AccountId");
+
+                    b.HasIndex("RestaurantId")
+                        .HasDatabaseName("IDX_Cart_RestaurantId");
 
                     b.ToTable("Carts");
                 });
@@ -531,7 +543,9 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -542,14 +556,18 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("ModifiedBy")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -581,11 +599,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1833),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9392),
                             Description = "Aromatic rice dish with marinated chicken and spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1833),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9394),
                             Name = "Biryani",
                             Price = 350m,
                             RestaurantId = 1
@@ -594,11 +612,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1838),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9488),
                             Description = "Rich stew of lentils, wheat, and tender beef",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1838),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9488),
                             Name = "Haleem",
                             Price = 220m,
                             RestaurantId = 1
@@ -607,11 +625,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 3,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1839),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9490),
                             Description = "Crispy shells filled with tangy tamarind and chickpeas",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1840),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9490),
                             Name = "Fuchka",
                             Price = 120m,
                             RestaurantId = 1
@@ -620,11 +638,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 4,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1841),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9495),
                             Description = "Mixed rice dish with lentils and aromatic spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1841),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9496),
                             Name = "Bhuna Khichuri",
                             Price = 280m,
                             RestaurantId = 1
@@ -633,11 +651,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 5,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1842),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9497),
                             Description = "Traditional rice cake, a sweet delight",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1842),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9497),
                             Name = "Pitha",
                             Price = 150m,
                             RestaurantId = 1
@@ -646,11 +664,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 6,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1844),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9500),
                             Description = "Soft, spongy cheese balls in syrup",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1844),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9501),
                             Name = "Roshogolla",
                             Price = 100m,
                             RestaurantId = 1
@@ -659,11 +677,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 7,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1845),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9502),
                             Description = "Creamy coconut shrimp curry",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1845),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9503),
                             Name = "Chingri Malai Curry",
                             Price = 400m,
                             RestaurantId = 1
@@ -672,11 +690,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 8,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1847),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9504),
                             Description = "Slow-cooked spiced beef, a Chittagong specialty",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1847),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9504),
                             Name = "Beef Kala Bhuna",
                             Price = 320m,
                             RestaurantId = 1
@@ -685,11 +703,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 9,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1848),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9506),
                             Description = "Sweetened yogurt dessert",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1848),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9506),
                             Name = "Mishti Doi",
                             Price = 150m,
                             RestaurantId = 1
@@ -698,11 +716,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 10,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1850),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9508),
                             Description = "Stuffed bread with egg and minced meat",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1850),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9509),
                             Name = "Mughlai Paratha",
                             Price = 180m,
                             RestaurantId = 1
@@ -711,11 +729,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 11,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1854),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9516),
                             Description = "Spiced, grilled chicken chunks",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1854),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9516),
                             Name = "Chicken Tikka",
                             Price = 320m,
                             RestaurantId = 2
@@ -724,11 +742,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 12,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1855),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9518),
                             Description = "Fried bread stuffed with spicy lentils",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1856),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9519),
                             Name = "Dal Puri",
                             Price = 130m,
                             RestaurantId = 2
@@ -737,11 +755,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 13,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1857),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9520),
                             Description = "Mashed potatoes with mustard oil and spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1857),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9520),
                             Name = "Aloo Bhorta",
                             Price = 90m,
                             RestaurantId = 2
@@ -750,11 +768,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 14,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1858),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9522),
                             Description = "Hilsa fish in mustard sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1858),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9522),
                             Name = "Sorshe Ilish",
                             Price = 450m,
                             RestaurantId = 2
@@ -763,11 +781,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 15,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1859),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9523),
                             Description = "Slow-cooked beef stew",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1859),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9524),
                             Name = "Nihari",
                             Price = 300m,
                             RestaurantId = 2
@@ -776,11 +794,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 16,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1861),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9526),
                             Description = "Layered rice and goat meat dish",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1861),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9526),
                             Name = "Kacchi Biryani",
                             Price = 380m,
                             RestaurantId = 2
@@ -789,11 +807,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 17,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1862),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9528),
                             Description = "Crepes with coconut and jaggery filling",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1862),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9528),
                             Name = "Patishapta",
                             Price = 160m,
                             RestaurantId = 2
@@ -802,11 +820,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 18,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1863),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9529),
                             Description = "Deep-fried flatbread",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1864),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9529),
                             Name = "Luchi",
                             Price = 70m,
                             RestaurantId = 2
@@ -815,11 +833,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 19,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1865),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9531),
                             Description = "Cottage cheese in creamy tomato sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1865),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9531),
                             Name = "Paneer Butter Masala",
                             Price = 350m,
                             RestaurantId = 2
@@ -828,11 +846,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 20,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1866),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9533),
                             Description = "Refreshing yogurt-based mango drink",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1867),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9534),
                             Name = "Mango Lassi",
                             Price = 180m,
                             RestaurantId = 2
@@ -841,11 +859,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 21,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1869),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9537),
                             Description = "Bread pudding with nuts and cream",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1869),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9538),
                             Name = "Shahi Tukra",
                             Price = 200m,
                             RestaurantId = 3
@@ -854,11 +872,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 22,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1870),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9540),
                             Description = "Spicy lamb curry with a thick gravy",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1870),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9540),
                             Name = "Lamb Bhuna",
                             Price = 370m,
                             RestaurantId = 3
@@ -867,11 +885,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 23,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1871),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9541),
                             Description = "Chicken curry with pickling spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1872),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9542),
                             Name = "Achari Chicken",
                             Price = 340m,
                             RestaurantId = 3
@@ -880,11 +898,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 24,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1873),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9543),
                             Description = "Mixed rice with vegetables and lentils",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1873),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9543),
                             Name = "Sabzi Khichuri",
                             Price = 260m,
                             RestaurantId = 3
@@ -893,11 +911,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 25,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1874),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9686),
                             Description = "Fish in a yogurt-based curry",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1874),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9686),
                             Name = "Doi Maach",
                             Price = 310m,
                             RestaurantId = 3
@@ -906,11 +924,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 26,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1875),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9689),
                             Description = "Fish curry with mustard paste",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1876),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9689),
                             Name = "Shorshe Bata Diye Macher Jhol",
                             Price = 330m,
                             RestaurantId = 3
@@ -919,11 +937,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 27,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1877),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9691),
                             Description = "Dark, syrupy sweet made from milk solids",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1877),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9691),
                             Name = "Kalojam",
                             Price = 110m,
                             RestaurantId = 3
@@ -932,11 +950,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 28,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1878),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9692),
                             Description = "Sweet vermicelli dessert",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1878),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9693),
                             Name = "Shemai",
                             Price = 140m,
                             RestaurantId = 3
@@ -945,11 +963,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 29,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1879),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9694),
                             Description = "Mutton in a rich, creamy sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1879),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9694),
                             Name = "Mutton Korma",
                             Price = 390m,
                             RestaurantId = 3
@@ -958,11 +976,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 30,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1880),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9697),
                             Description = "Stir-fried cottage cheese with vegetables",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1881),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9697),
                             Name = "Paneer Jalfrezi",
                             Price = 320m,
                             RestaurantId = 3
@@ -971,11 +989,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 31,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1883),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9701),
                             Description = "Spicy chicken stir-fry with vegetables",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1883),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9701),
                             Name = "Chicken Jalfrezi",
                             Price = 330m,
                             RestaurantId = 4
@@ -984,11 +1002,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 32,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1884),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9703),
                             Description = "Crispy pastry filled with spiced vegetables",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1885),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9703),
                             Name = "Vegetable Samosa",
                             Price = 80m,
                             RestaurantId = 4
@@ -997,11 +1015,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 33,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1886),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9705),
                             Description = "Cottage cheese in a spiced spinach gravy",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1886),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9705),
                             Name = "Palak Paneer",
                             Price = 310m,
                             RestaurantId = 4
@@ -1010,11 +1028,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 34,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1887),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9706),
                             Description = "Creamy dessert of paneer balls in milk syrup",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1887),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9707),
                             Name = "Ras Malai",
                             Price = 190m,
                             RestaurantId = 4
@@ -1023,11 +1041,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 35,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1888),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9708),
                             Description = "Mild goat curry with yogurt and cashew nuts",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1888),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9708),
                             Name = "Goat Rezala",
                             Price = 380m,
                             RestaurantId = 4
@@ -1036,11 +1054,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 36,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1914),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9711),
                             Description = "Mashed eggplant with onions and tomatoes",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1914),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9711),
                             Name = "Baingan Bharta",
                             Price = 200m,
                             RestaurantId = 4
@@ -1049,11 +1067,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 37,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1915),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9712),
                             Description = "Flavorful rice dish with chicken and spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1916),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9713),
                             Name = "Chicken Biryani",
                             Price = 360m,
                             RestaurantId = 4
@@ -1062,11 +1080,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 38,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1917),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9715),
                             Description = "Fried lentil balls soaked in yogurt",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1917),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9715),
                             Name = "Dahi Vada",
                             Price = 170m,
                             RestaurantId = 4
@@ -1075,11 +1093,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 39,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1918),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9717),
                             Description = "Yogurt and spice-marinated chicken, grilled",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1918),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9717),
                             Name = "Tandoori Chicken",
                             Price = 350m,
                             RestaurantId = 4
@@ -1088,11 +1106,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 40,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1920),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9719),
                             Description = "Traditional Indian ice cream",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1920),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9720),
                             Name = "Kulfi",
                             Price = 150m,
                             RestaurantId = 4
@@ -1101,11 +1119,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 41,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1922),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9723),
                             Description = "Mashed fish with mustard oil and spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1922),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9723),
                             Name = "Fish Bharta",
                             Price = 300m,
                             RestaurantId = 5
@@ -1114,11 +1132,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 42,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1924),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9725),
                             Description = "Eggplant slices in a chickpea flour batter",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1924),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9725),
                             Name = "Beguni",
                             Price = 100m,
                             RestaurantId = 5
@@ -1127,11 +1145,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 43,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1925),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9727),
                             Description = "Layered rice and mutton cooked with aromatic spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1925),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9727),
                             Name = "Mutton Biryani",
                             Price = 380m,
                             RestaurantId = 5
@@ -1140,11 +1158,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 44,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1926),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9728),
                             Description = "Tangy tamarind and chickpea snack",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1926),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9728),
                             Name = "Chotpoti",
                             Price = 120m,
                             RestaurantId = 5
@@ -1153,11 +1171,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 45,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1927),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9730),
                             Description = "Roasted chicken in a flavorful gravy",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1928),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9730),
                             Name = "Chicken Roast",
                             Price = 350m,
                             RestaurantId = 5
@@ -1166,11 +1184,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 46,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1929),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9732),
                             Description = "Bottle gourd cooked with lentils",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1930),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9733),
                             Name = "Lau Ghonto",
                             Price = 180m,
                             RestaurantId = 5
@@ -1179,11 +1197,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 47,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1931),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9734),
                             Description = "Sweet pumpkin curry",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1931),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9734),
                             Name = "Misti Kumra",
                             Price = 210m,
                             RestaurantId = 5
@@ -1192,11 +1210,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 48,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1932),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9736),
                             Description = "Prawns in a creamy coconut milk sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1933),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9736),
                             Name = "Prawn Malai Curry",
                             Price = 420m,
                             RestaurantId = 5
@@ -1205,11 +1223,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 49,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1934),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9737),
                             Description = "Spicy black beef curry",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1934),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9737),
                             Name = "Kalo Bhuna",
                             Price = 370m,
                             RestaurantId = 5
@@ -1218,11 +1236,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 50,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1936),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9740),
                             Description = "Spiced rice with beef",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1936),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9740),
                             Name = "Tehari",
                             Price = 340m,
                             RestaurantId = 5
@@ -1231,11 +1249,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 51,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1938),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9744),
                             Description = "Lentil-stuffed fried bread",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1939),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9744),
                             Name = "Daal Puri",
                             Price = 110m,
                             RestaurantId = 6
@@ -1244,11 +1262,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 52,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1940),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9746),
                             Description = "Creamy chicken curry cooked in a handi",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1940),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9746),
                             Name = "Chicken Handi",
                             Price = 320m,
                             RestaurantId = 6
@@ -1257,11 +1275,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 53,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1941),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9748),
                             Description = "Mixed vegetable fritters",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1941),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9748),
                             Name = "Vegetable Pakora",
                             Price = 90m,
                             RestaurantId = 6
@@ -1270,11 +1288,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 54,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1942),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9750),
                             Description = "Aromatic rice with tender beef pieces",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1943),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9750),
                             Name = "Beef Tehari",
                             Price = 360m,
                             RestaurantId = 6
@@ -1283,11 +1301,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 55,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1944),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9752),
                             Description = "Rich and hearty lentil and meat stew",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1944),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9752),
                             Name = "Shahi Halim",
                             Price = 250m,
                             RestaurantId = 6
@@ -1296,11 +1314,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 56,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1945),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9754),
                             Description = "Mango flavored rice pudding",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1946),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9754),
                             Name = "Mango Firni",
                             Price = 150m,
                             RestaurantId = 6
@@ -1309,11 +1327,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 57,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1947),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9756),
                             Description = "Fish balls in a spicy gravy",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1947),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9756),
                             Name = "Fish Kofta Curry",
                             Price = 330m,
                             RestaurantId = 6
@@ -1322,11 +1340,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 58,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1948),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9758),
                             Description = "Mild yogurt-based mutton curry",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1948),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9758),
                             Name = "Mutton Rezala",
                             Price = 390m,
                             RestaurantId = 6
@@ -1335,11 +1353,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 59,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1949),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9759),
                             Description = "Chicken cooked with spinach and spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1949),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9760),
                             Name = "Palak Chicken",
                             Price = 310m,
                             RestaurantId = 6
@@ -1348,11 +1366,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 60,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1951),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9762),
                             Description = "Rice and lentil mix with assorted vegetables",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1951),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9762),
                             Name = "Vegetable Khichuri",
                             Price = 260m,
                             RestaurantId = 6
@@ -1361,11 +1379,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 61,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1952),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9765),
                             Description = "Grilled paneer with spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1953),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9765),
                             Name = "Paneer Tikka",
                             Price = 280m,
                             RestaurantId = 7
@@ -1374,11 +1392,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 62,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1954),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9767),
                             Description = "Spicy grilled mutton ribs",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1954),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9768),
                             Name = "Mutton Chaap",
                             Price = 400m,
                             RestaurantId = 7
@@ -1387,11 +1405,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 63,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1955),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9769),
                             Description = "Stir-fried vegetables with Indian spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1956),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9769),
                             Name = "Vegetable Jalfrezi",
                             Price = 220m,
                             RestaurantId = 7
@@ -1400,11 +1418,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 64,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1957),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9771),
                             Description = "Chicken in a creamy almond sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1957),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9771),
                             Name = "Chicken Korma",
                             Price = 340m,
                             RestaurantId = 7
@@ -1413,11 +1431,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 65,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1958),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9772),
                             Description = "Steamed hilsa fish with mustard",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1958),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9773),
                             Name = "Bhapa Ilish",
                             Price = 450m,
                             RestaurantId = 7
@@ -1426,11 +1444,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 66,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1959),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9775),
                             Description = "Cottage cheese in a rich tomato gravy",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1960),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9775),
                             Name = "Shahi Paneer",
                             Price = 310m,
                             RestaurantId = 7
@@ -1439,11 +1457,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 67,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1961),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9834),
                             Description = "Fragrant rice with marinated chicken",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1961),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9835),
                             Name = "Chicken Biriyani",
                             Price = 360m,
                             RestaurantId = 7
@@ -1452,11 +1470,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 68,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1962),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9837),
                             Description = "Lentil soup with spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1962),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9837),
                             Name = "Moong Dal",
                             Price = 150m,
                             RestaurantId = 7
@@ -1465,11 +1483,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 69,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1963),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9838),
                             Description = "Crispy fried seasoned fish",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1963),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9839),
                             Name = "Fish Fry",
                             Price = 320m,
                             RestaurantId = 7
@@ -1478,11 +1496,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 70,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1965),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9841),
                             Description = "Lentil cakes in a spicy gravy",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1965),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9841),
                             Name = "Dhokar Dalna",
                             Price = 210m,
                             RestaurantId = 7
@@ -1491,11 +1509,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 71,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1967),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9844),
                             Description = "Spicy beef skewers",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1967),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9844),
                             Name = "Beef Boti Kebab",
                             Price = 380m,
                             RestaurantId = 8
@@ -1504,11 +1522,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 72,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1968),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9846),
                             Description = "Mashed spiced shrimp",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1969),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9846),
                             Name = "Chingri Bhorta",
                             Price = 340m,
                             RestaurantId = 8
@@ -1517,11 +1535,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 73,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1969),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9848),
                             Description = "Crushed samosa with chickpea and tamarind",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1970),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9848),
                             Name = "Samosa Chat",
                             Price = 120m,
                             RestaurantId = 8
@@ -1530,11 +1548,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 74,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1974),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9850),
                             Description = "Chicken in a creamy buttery tomato sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1974),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9850),
                             Name = "Butter Chicken",
                             Price = 360m,
                             RestaurantId = 8
@@ -1543,11 +1561,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 75,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1975),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9851),
                             Description = "Assorted vegetables in a spicy gravy",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1975),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9852),
                             Name = "Mixed Vegetable Curry",
                             Price = 230m,
                             RestaurantId = 8
@@ -1556,11 +1574,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 76,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1976),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9854),
                             Description = "Hard-boiled eggs in a creamy sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1976),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9854),
                             Name = "Egg Korma",
                             Price = 250m,
                             RestaurantId = 8
@@ -1569,11 +1587,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 77,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1977),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9856),
                             Description = "Spicy lamb curry with a vinegar tang",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1978),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9856),
                             Name = "Lamb Vindaloo",
                             Price = 390m,
                             RestaurantId = 8
@@ -1582,11 +1600,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 78,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1979),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9857),
                             Description = "Cauliflower and potatoes cooked with Indian spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1979),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9857),
                             Name = "Aloo Gobi",
                             Price = 210m,
                             RestaurantId = 8
@@ -1595,11 +1613,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 79,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1980),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9859),
                             Description = "Chicken curry with a double onion base",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1980),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9859),
                             Name = "Chicken Do Pyaza",
                             Price = 320m,
                             RestaurantId = 8
@@ -1608,11 +1626,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 80,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1981),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9862),
                             Description = "Cheese dumplings in a creamy milk sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1982),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9862),
                             Name = "Rasmalai",
                             Price = 180m,
                             RestaurantId = 8
@@ -1621,11 +1639,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 81,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1995),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9865),
                             Description = "Tender lamb cooked in a rich, aromatic sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1995),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9865),
                             Name = "Lamb Rogan Josh",
                             Price = 410m,
                             RestaurantId = 9
@@ -1634,11 +1652,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 82,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1997),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9867),
                             Description = "Spicy and tangy shrimp curry",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1997),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9867),
                             Name = "Shrimp Bhuna",
                             Price = 360m,
                             RestaurantId = 9
@@ -1647,11 +1665,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 83,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1998),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9869),
                             Description = "Flatbread stuffed with spiced potatoes",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(1999),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9869),
                             Name = "Aloo Paratha",
                             Price = 150m,
                             RestaurantId = 9
@@ -1660,11 +1678,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 84,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2000),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9870),
                             Description = "Fragrant rice cooked with mixed vegetables",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2000),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9871),
                             Name = "Vegetable Biryani",
                             Price = 320m,
                             RestaurantId = 9
@@ -1673,11 +1691,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 85,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2001),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9872),
                             Description = "Soft and buttery flatbread",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2001),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9872),
                             Name = "Butter Naan",
                             Price = 50m,
                             RestaurantId = 9
@@ -1686,11 +1704,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 86,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2002),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9875),
                             Description = "Paneer in a spicy tomato-based sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2003),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9875),
                             Name = "Paneer Masala",
                             Price = 330m,
                             RestaurantId = 9
@@ -1699,11 +1717,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 87,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2004),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9876),
                             Description = "Chicken in a rich and spicy curry",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2004),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9877),
                             Name = "Chicken Masala",
                             Price = 350m,
                             RestaurantId = 9
@@ -1712,11 +1730,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 88,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2005),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9878),
                             Description = "Soft milk-solid balls soaked in rose-scented syrup",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2005),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9878),
                             Name = "Gulab Jamun",
                             Price = 120m,
                             RestaurantId = 9
@@ -1725,11 +1743,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 89,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2006),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9880),
                             Description = "Minced meat cooked with peas and spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2006),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9880),
                             Name = "Keema Matar",
                             Price = 340m,
                             RestaurantId = 9
@@ -1738,11 +1756,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 90,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2008),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9882),
                             Description = "Creamy black lentils cooked with butter and spices",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2008),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9882),
                             Name = "Dal Makhani",
                             Price = 250m,
                             RestaurantId = 9
@@ -1751,11 +1769,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 91,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2010),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9886),
                             Description = "Grilled chicken chunks in a spicy sauce",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2011),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9887),
                             Name = "Chicken Tikka Masala",
                             Price = 360m,
                             RestaurantId = 10
@@ -1764,11 +1782,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 92,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2012),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9889),
                             Description = "Leavened bread made from maida flour",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2012),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9889),
                             Name = "Kulcha",
                             Price = 60m,
                             RestaurantId = 10
@@ -1777,11 +1795,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 93,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2014),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9890),
                             Description = "Spiced and grilled boneless fish pieces",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2014),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9891),
                             Name = "Fish Tikka",
                             Price = 380m,
                             RestaurantId = 10
@@ -1790,11 +1808,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 94,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2015),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9892),
                             Description = "Chicken curry made in Mughlai style",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2015),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9892),
                             Name = "Mughlai Chicken",
                             Price = 370m,
                             RestaurantId = 10
@@ -1803,11 +1821,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 95,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2016),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9893),
                             Description = "Marinated paneer grilled to perfection",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2017),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9894),
                             Name = "Paneer Tikka",
                             Price = 310m,
                             RestaurantId = 10
@@ -1816,11 +1834,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 96,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2018),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9896),
                             Description = "Spiced minced beef grilled on skewers",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2018),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9896),
                             Name = "Beef Sheek Kebab",
                             Price = 400m,
                             RestaurantId = 10
@@ -1829,11 +1847,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 97,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2019),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9898),
                             Description = "Assorted vegetables cooked in a flavorful curry",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2019),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9898),
                             Name = "Vegetable Curry",
                             Price = 270m,
                             RestaurantId = 10
@@ -1842,11 +1860,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 98,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2020),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9899),
                             Description = "Spiced potato patties",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2021),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9900),
                             Name = "Aloo Tikki",
                             Price = 110m,
                             RestaurantId = 10
@@ -1855,11 +1873,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 99,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2022),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9901),
                             Description = "Spicy chickpeas curry",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2022),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9901),
                             Name = "Chana Masala",
                             Price = 240m,
                             RestaurantId = 10
@@ -1868,11 +1886,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 100,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2023),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9904),
                             Description = "Traditional yogurt-based drink",
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2024),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(9904),
                             Name = "Lassi",
                             Price = 150m,
                             RestaurantId = 10
@@ -1999,7 +2017,9 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<decimal>("Latitude")
                         .HasColumnType("decimal(9, 6)");
@@ -2012,7 +2032,9 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("StreetAddress")
                         .HasMaxLength(100)
@@ -2031,101 +2053,101 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         {
                             Id = 1,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2376),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(1975),
                             Latitude = 23.8103m,
                             Longitude = 90.4125m,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2376)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(1975)
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2380),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(1985),
                             Latitude = 22.3569m,
                             Longitude = 91.7832m,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2381)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(1985)
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2382),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(1987),
                             Latitude = 24.8949m,
                             Longitude = 91.8687m,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2382)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(1987)
                         },
                         new
                         {
                             Id = 4,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2383),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2035),
                             Latitude = 24.3636m,
                             Longitude = 88.6241m,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2383)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2035)
                         },
                         new
                         {
                             Id = 5,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2384),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2037),
                             Latitude = 22.8456m,
                             Longitude = 89.5403m,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2384)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2038)
                         },
                         new
                         {
                             Id = 6,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2386),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2041),
                             Latitude = 22.7010m,
                             Longitude = 90.3535m,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2386)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2041)
                         },
                         new
                         {
                             Id = 7,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2387),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2043),
                             Latitude = 25.7439m,
                             Longitude = 89.2752m,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2387)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2043)
                         },
                         new
                         {
                             Id = 8,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2388),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2045),
                             Latitude = 24.7471m,
                             Longitude = 90.4203m,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2389)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2045)
                         },
                         new
                         {
                             Id = 9,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2389),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2047),
                             Latitude = 23.4609m,
                             Longitude = 91.1809m,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2390)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2047)
                         },
                         new
                         {
                             Id = 10,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2391),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2049),
                             Latitude = 24.0023m,
                             Longitude = 90.4264m,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(2391)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 919, DateTimeKind.Utc).AddTicks(2050)
                         });
                 });
 
@@ -2204,10 +2226,14 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
@@ -2217,7 +2243,9 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("RestaurantName")
                         .IsRequired()
@@ -2243,11 +2271,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 1,
                             AccountId = 2,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(691),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2805),
                             IsAvailable = false,
                             LocationId = 1,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(691),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2806),
                             RestaurantName = "Dhaka Delights"
                         },
                         new
@@ -2255,11 +2283,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 2,
                             AccountId = 3,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(694),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2815),
                             IsAvailable = false,
                             LocationId = 2,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(694),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2816),
                             RestaurantName = "Chittagong Eats"
                         },
                         new
@@ -2267,11 +2295,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 3,
                             AccountId = 4,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(695),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2817),
                             IsAvailable = false,
                             LocationId = 3,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(696),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2818),
                             RestaurantName = "Sylhet Spices"
                         },
                         new
@@ -2279,11 +2307,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 4,
                             AccountId = 5,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(697),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2819),
                             IsAvailable = false,
                             LocationId = 4,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(697),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2819),
                             RestaurantName = "Rajshahi Recipes"
                         },
                         new
@@ -2291,11 +2319,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 5,
                             AccountId = 6,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(698),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2821),
                             IsAvailable = false,
                             LocationId = 5,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(698),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2821),
                             RestaurantName = "Khulna Kitchen"
                         },
                         new
@@ -2303,11 +2331,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 6,
                             AccountId = 7,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(700),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2824),
                             IsAvailable = false,
                             LocationId = 6,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(700),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2824),
                             RestaurantName = "Barisal Bites"
                         },
                         new
@@ -2315,11 +2343,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 7,
                             AccountId = 8,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(701),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2825),
                             IsAvailable = false,
                             LocationId = 7,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(701),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2826),
                             RestaurantName = "Rangpur Relish"
                         },
                         new
@@ -2327,11 +2355,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 8,
                             AccountId = 9,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(702),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2827),
                             IsAvailable = false,
                             LocationId = 8,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(702),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2827),
                             RestaurantName = "Mymensingh Munch"
                         },
                         new
@@ -2339,11 +2367,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 9,
                             AccountId = 10,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(703),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2829),
                             IsAvailable = false,
                             LocationId = 9,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(704),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2829),
                             RestaurantName = "Comilla Cuisine"
                         },
                         new
@@ -2351,11 +2379,11 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 10,
                             AccountId = 11,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(705),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2831),
                             IsAvailable = false,
                             LocationId = 10,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(706),
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(2832),
                             RestaurantName = "Gazipur Gourmet"
                         });
                 });
@@ -2377,17 +2405,23 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("ModifiedBy")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.HasKey("Id");
 
@@ -2405,100 +2439,100 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                             Id = 1,
                             AccountId = 12,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(945),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5495),
                             IsAvailable = true,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(945)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5496)
                         },
                         new
                         {
                             Id = 2,
                             AccountId = 13,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(947),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5504),
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(947)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5505)
                         },
                         new
                         {
                             Id = 3,
                             AccountId = 14,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(948),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5507),
                             IsAvailable = true,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(948)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5507)
                         },
                         new
                         {
                             Id = 4,
                             AccountId = 15,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(949),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5509),
                             IsAvailable = true,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(949)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5510)
                         },
                         new
                         {
                             Id = 5,
                             AccountId = 16,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(950),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5511),
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(950)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5512)
                         },
                         new
                         {
                             Id = 6,
                             AccountId = 17,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(952),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5517),
                             IsAvailable = true,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(952)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5517)
                         },
                         new
                         {
                             Id = 7,
                             AccountId = 18,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(953),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5519),
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(953)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5519)
                         },
                         new
                         {
                             Id = 8,
                             AccountId = 19,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(954),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5520),
                             IsAvailable = true,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(954)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5520)
                         },
                         new
                         {
                             Id = 9,
                             AccountId = 20,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(955),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5522),
                             IsAvailable = true,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(955)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5522)
                         },
                         new
                         {
                             Id = 10,
                             AccountId = 21,
                             CreatedBy = "TastyEatsBD_WebApp",
-                            CreatedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(957),
+                            CreatedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5524),
                             IsAvailable = false,
                             ModifiedBy = "TastyEatsBD_WebApp",
-                            ModifiedOn = new DateTime(2024, 3, 27, 23, 7, 1, 128, DateTimeKind.Utc).AddTicks(957)
+                            ModifiedOn = new DateTime(2024, 5, 2, 15, 11, 48, 918, DateTimeKind.Utc).AddTicks(5525)
                         });
                 });
 
@@ -2521,7 +2555,15 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
+                    b.HasOne("TastyEatsBD.Core.Entities.Restaurant", "Restaurant")
+                        .WithMany("Carts")
+                        .HasForeignKey("RestaurantId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.Navigation("Account");
+
+                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("TastyEatsBD.Core.Entities.CartItem", b =>
@@ -2710,6 +2752,8 @@ namespace TastyEatsBD.Infrastructure.Data.Migrations.TastyEatsMigrations
 
             modelBuilder.Entity("TastyEatsBD.Core.Entities.Restaurant", b =>
                 {
+                    b.Navigation("Carts");
+
                     b.Navigation("DeliveryOrders");
 
                     b.Navigation("Items");

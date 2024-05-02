@@ -26,8 +26,21 @@
             <FluentButton Appearance="Appearance.Lightweight"
                           IconStart="@(new Icons.Regular.Size20.Cart())"
                           OnClick="@(() => AddToCartAsync())"
-                          Style="border: 1px solid #CCCCCC; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                Add
+                          Style=@($"border: 1px solid #CCCCCC; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);")>
+
+                @if (CartItem.Quantity > 0)
+                {
+                    <FluentCounterBadge Count="CartItem.Quantity"
+                                        Style="left:90%;"
+                                        Appearance="Appearance.Accent">
+                        Add
+                    </FluentCounterBadge>
+                }
+                else
+                {
+                    @("Add")
+                }
+
             </FluentButton>
         }
 
@@ -44,11 +57,32 @@
     [Parameter]
     public bool? CanAddToCart { get; set; } = false;
 
-    private int CartId { get; set; } = 0;
+    private CartItem CartItem { get; set; } = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if(CanAddToCart == true)
+        {
+            CartItem = await CartService.GetItemInfoAsync(Item.Id).ConfigureAwait(false);
+        }
+    }
 
     private async void AddToCartAsync()
     {
-        CartId = await CartService.AddToCartAsync(Item.Id, CartId);
+        if (CartState.Cart?.RestaurantId != Item.RestaurantId)
+        {
+            // TODO: Take Confirmation
+            await CartService.ClearCartAsync().ConfigureAwait(false);
+        }
+
+        await CartService.AddToCartAsync(Item.Id).ConfigureAwait(false);
+        CartItem = await CartService.GetItemInfoAsync(Item.Id).ConfigureAwait(false);
+
         await CartState.NotifyChangesAsync();
+        await InvokeAsync(() =>
+        {
+            // Any UI update logic
+            StateHasChanged();
+        });
     }
 }

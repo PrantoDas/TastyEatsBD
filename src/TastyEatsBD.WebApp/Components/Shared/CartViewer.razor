@@ -6,11 +6,11 @@
 @rendermode InteractiveServer
 
 
-@if (Cart != null && Cart?.CartItems.Count > 0)
+@if (CartState.Cart != null && CartState.Cart?.CartItems?.Count > 0)
 {
-    <FluentCounterBadge Count="Cart?.CartItems.Sum(i => i.Quantity)"
+    <FluentCounterBadge Count="CartState.Cart?.CartItems.Sum(i => i.Quantity)"
                         Appearance="Appearance.Lightweight"
-                        BottomPosition="60"
+                        VerticalPosition="60"
                         HorizontalPosition="40" 
                         Style="font-size:small; min-width: 13px;">
         <FluentIcon Value="@(new Icons.Regular.Size24.Cart())"
@@ -24,8 +24,6 @@
 {
     [CascadingParameter]
     private CartState CartState { get; set; }
-
-    private Cart Cart { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -44,8 +42,11 @@
 
     private async Task RefreshCartAsync()
     {
-        Cart = await CartService.GetCartInfoAsync();
-        StateHasChanged();
+        CartState.Cart = await CartService.GetCartInfoAsync();
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
     }
 
     private void OpenCart()
